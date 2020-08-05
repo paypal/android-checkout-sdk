@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="@dimen/dialog_padding">
+
+    <TextView
+        android:id="@+id/createItemTitle"
+        style="@style/DialogTitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/dialog_create_item_title"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/itemNameInput"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="@string/dialog_create_item_name_hint"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/createItemTitle">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/itemQuantityInput"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="@string/dialog_create_item_quantity_hint"
+        android:layout_marginTop="@dimen/input_field_margin"
+        android:layout_marginEnd="@dimen/input_field_margin"
+        app:layout_constraintEnd_toStartOf="@id/itemAmountInput"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/itemNameInput">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="number"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/itemAmountInput"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="@string/dialog_create_item_amount_hint"
+        android:layout_marginTop="@dimen/input_field_margin"
+        android:layout_marginEnd="@dimen/input_field_margin"
+        android:layout_marginStart="@dimen/input_field_margin"
+        app:layout_constraintEnd_toStartOf="@id/itemTaxInput"
+        app:layout_constraintStart_toEndOf="@id/itemQuantityInput"
+        app:layout_constraintTop_toBottomOf="@id/itemNameInput">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="numberDecimal"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/itemTaxInput"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="@string/dialog_create_item_tax_amount_hint"
+        android:layout_marginTop="@dimen/input_field_margin"
+        android:layout_marginStart="@dimen/input_field_margin"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/itemAmountInput"
+        app:layout_constraintTop_toBottomOf="@id/itemNameInput">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="numberDecimal"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <androidx.constraintlayout.widget.Barrier
+        android:id="@+id/textInputBarrier"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:barrierDirection="bottom"
+        app:constraint_referenced_ids="itemQuantityInput, itemAmountInput, itemTaxInput" />
+
+    <RadioGroup
+        android:id="@+id/selectItemCategory"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:checkedButton="@id/userActionOptionContinue"
+        android:orientation="vertical"
+        android:layout_marginTop="@dimen/section_vertical_spacing"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textInputBarrier">
+
+        <TextView
+            style="@style/RadioLabelText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/dialog_create_item_category_label" />
+
+        <com.google.android.material.radiobutton.MaterialRadioButton
+            android:id="@+id/itemCategoryPhysicalGoods"
+            style="@style/RadioButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/dialog_create_item_category_option_physical_goods" />
+
+        <com.google.android.material.radiobutton.MaterialRadioButton
+            android:id="@+id/itemCategoryDigitalGoods"
+            style="@style/RadioButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/dialog_create_item_category_option_digital_goods" />
+
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/createItemButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/dialog_create_item_button"
+        android:layout_marginTop="@dimen/section_vertical_spacing"
+        app:layout_constraintTop_toBottomOf="@id/selectItemCategory"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

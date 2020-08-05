@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rootOrdersQuickStart"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="@dimen/activity_padding"
+    tools:context=".order.OrdersQuickStartActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/configureOrdersTitle"
+            style="@style/OrdersTitleText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/orders_quick_start_activity_configuration_options_title"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <RadioGroup
+            android:id="@+id/selectUserAction"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:checkedButton="@id/userActionOptionContinue"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/configureOrdersTitle">
+
+            <TextView
+                style="@style/RadioLabelText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/orders_quick_start_activity_configuration_user_action_label" />
+
+            <com.google.android.material.radiobutton.MaterialRadioButton
+                android:id="@+id/userActionOptionContinue"
+                style="@style/RadioButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/orders_quick_start_activity_configuration_user_action_option_continue" />
+
+            <com.google.android.material.radiobutton.MaterialRadioButton
+                android:id="@+id/userActionOptionPayNow"
+                style="@style/RadioButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/orders_quick_start_activity_configuration_user_action_option_pay_now" />
+
+        </RadioGroup>
+
+        <RadioGroup
+            android:id="@+id/selectOrderIntent"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:checkedButton="@id/orderIntentOptionCapture"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/selectUserAction">
+
+            <TextView
+                style="@style/RadioLabelText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/orders_quick_start_activity_configuration_intent_label" />
+
+            <com.google.android.material.radiobutton.MaterialRadioButton
+                android:id="@+id/orderIntentOptionCapture"
+                style="@style/RadioButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/orders_quick_start_activity_configuration_intent_option_capture" />
+
+            <com.google.android.material.radiobutton.MaterialRadioButton
+                android:id="@+id/orderIntentOptionAuthorize"
+                style="@style/RadioButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/orders_quick_start_activity_configuration_intent_option_authorize" />
+
+        </RadioGroup>
+
+        <RadioGroup
+            android:id="@+id/selectCurrencyCode"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:checkedButton="@id/currencyCodeUsd"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/selectOrderIntent">
+
+            <TextView
+                style="@style/RadioLabelText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/orders_quick_start_activity_configuration_currency_code_label" />
+
+            <com.google.android.material.radiobutton.MaterialRadioButton
+                android:id="@+id/currencyCodeUsd"
+                style="@style/RadioButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/orders_quick_start_activity_configuration_currency_code_option_usd" />
+
+            <com.google.android.material.radiobutton.MaterialRadioButton
+                android:id="@+id/currencyCodeEur"
+                style="@style/RadioButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/orders_quick_start_activity_configuration_currency_code_option_eur" />
+
+            <com.google.android.material.radiobutton.MaterialRadioButton
+                android:id="@+id/currencyCodeGbp"
+                style="@style/RadioButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/orders_quick_start_activity_configuration_currency_code_option_gbp" />
+
+        </RadioGroup>
+
+        <androidx.constraintlayout.widget.Barrier
+            android:id="@+id/configureBarrier"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:barrierDirection="bottom"
+            app:constraint_referenced_ids="configureOrdersTitle, selectUserAction, selectOrderIntent, selectCurrencyCode" />
+
+        <TextView
+            android:id="@+id/addItemsTitle"
+            style="@style/OrdersTitleText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/section_vertical_spacing"
+            android:text="@string/orders_quick_start_activity_items_title"
+            app:layout_constraintEnd_toStartOf="@id/addItemButton"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/configureBarrier" />
+
+        <Button
+            android:id="@+id/addItemButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/orders_quick_start_activity_items_add_button"
+            app:layout_constraintBottom_toBottomOf="@id/addItemsTitle"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/addItemsTitle"
+            app:layout_constraintTop_toTopOf="@id/addItemsTitle" />
+
+        <LinearLayout
+            android:id="@+id/itemsContainer"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/addItemButton" />
+
+        <androidx.constraintlayout.widget.Barrier
+            android:id="@+id/addItemsBarrier"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:barrierDirection="bottom"
+            app:constraint_referenced_ids="addItemsTitle, addItemButton, itemsContainer" />
+
+        <TextView
+            android:id="@+id/shippingTitle"
+            style="@style/OrdersTitleText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/section_vertical_spacing"
+            android:text="@string/orders_quick_start_activity_shipping_preference_title"
+            app:layout_constraintTop_toBottomOf="@id/addItemsBarrier" />
+
+        <RadioGroup
+            android:id="@+id/selectShippingPreference"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:checkedButton="@id/shippingPreferenceOptionGetFromFile"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/shippingTitle">
+
+            <TextView
+                style="@style/RadioLabelText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/orders_quick_start_activity_shipping_preference_label" />
+
+            <com.google.android.material.radiobutton.MaterialRadioButton
+                android:id="@+id/shippingPreferenceOptionGetFromFile"
+                style="@style/RadioButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/orders_quick_start_activity_shipping_preference_option_get_from_file" />
+
+            <com.google.android.material.radiobutton.MaterialRadioButton
+                android:id="@+id/shippingPreferenceOptionNoShipping"
+                style="@style/RadioButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/orders_quick_start_activity_shipping_preference_option_no_shipping" />
+
+            <com.google.android.material.radiobutton.MaterialRadioButton
+                android:id="@+id/shippingPreferenceOptionSetProvidedAddress"
+                style="@style/RadioButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/orders_quick_start_activity_shipping_preference_option_set_provided_address" />
+
+        </RadioGroup>
+
+        <com.google.android.material.switchmaterial.SwitchMaterial
+            android:id="@+id/shippingCallbacksSwitch"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:enabled="false"
+            android:text="@string/orders_quick_start_activity_shipping_callbacks_switch_label"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/selectShippingPreference" />
+
+        <Button
+            android:id="@+id/submitOrderButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/orders_quick_start_activity_submit_order_button"
+            app:layout_constraintTop_toBottomOf="@id/shippingCallbacksSwitch"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>

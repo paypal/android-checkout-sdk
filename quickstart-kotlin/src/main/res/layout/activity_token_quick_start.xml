@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="@dimen/activity_padding"
+    tools:context=".token.TokenQuickStartActivity">
+
+    <TextView
+        android:id="@+id/configureOrdersTitle"
+        style="@style/OrdersTitleText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/token_quick_start_activity_configuration_options_title"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <RadioGroup
+        android:id="@+id/selectUserAction"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:checkedButton="@id/userActionOptionContinue"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/configureOrdersTitle">
+
+        <TextView
+            style="@style/RadioLabelText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/token_quick_start_activity_configuration_user_action_label" />
+
+        <com.google.android.material.radiobutton.MaterialRadioButton
+            android:id="@+id/userActionOptionContinue"
+            style="@style/RadioButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/token_quick_start_activity_configuration_user_action_option_continue" />
+
+        <com.google.android.material.radiobutton.MaterialRadioButton
+            android:id="@+id/userActionOptionPayNow"
+            style="@style/RadioButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/token_quick_start_activity_configuration_user_action_option_pay_now" />
+
+    </RadioGroup>
+
+    <RadioGroup
+        android:id="@+id/selectOrderIntent"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:checkedButton="@id/orderIntentOptionCapture"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/selectUserAction">
+
+        <TextView
+            style="@style/RadioLabelText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/token_quick_start_activity_configuration_intent_label" />
+
+        <com.google.android.material.radiobutton.MaterialRadioButton
+            android:id="@+id/orderIntentOptionCapture"
+            style="@style/RadioButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/token_quick_start_activity_configuration_intent_option_capture" />
+
+        <com.google.android.material.radiobutton.MaterialRadioButton
+            android:id="@+id/orderIntentOptionAuthorize"
+            style="@style/RadioButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/token_quick_start_activity_configuration_intent_option_authorize" />
+
+    </RadioGroup>
+
+    <RadioGroup
+        android:id="@+id/selectCurrencyCode"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:checkedButton="@id/currencyCodeUsd"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/selectOrderIntent">
+
+        <TextView
+            style="@style/RadioLabelText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/orders_quick_start_activity_configuration_currency_code_label" />
+
+        <com.google.android.material.radiobutton.MaterialRadioButton
+            android:id="@+id/currencyCodeUsd"
+            style="@style/RadioButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/orders_quick_start_activity_configuration_currency_code_option_usd" />
+
+        <com.google.android.material.radiobutton.MaterialRadioButton
+            android:id="@+id/currencyCodeEur"
+            style="@style/RadioButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/orders_quick_start_activity_configuration_currency_code_option_eur" />
+
+        <com.google.android.material.radiobutton.MaterialRadioButton
+            android:id="@+id/currencyCodeGbp"
+            style="@style/RadioButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/orders_quick_start_activity_configuration_currency_code_option_gbp" />
+
+    </RadioGroup>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/totalAmountInput"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="@string/token_quick_start_activity_total_amount_hint"
+        android:layout_marginTop="@dimen/input_field_margin"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/selectCurrencyCode">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="numberDecimal"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/submitTokenButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/token_quick_start_activity_submit_order_button"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

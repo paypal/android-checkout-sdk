@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingTop="@dimen/container_vertical_spacing"
+    android:paddingBottom="@dimen/container_vertical_spacing">
+
+    <TextView
+        android:id="@+id/itemNameText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Shopping Cart" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineFirstThird"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent=".33" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineSecondThird"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent=".66" />
+
+    <TextView
+        android:id="@+id/itemAmountText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/guidelineFirstThird"
+        app:layout_constraintTop_toBottomOf="@id/itemNameText"
+        tools:text="$3.33"/>
+
+    <TextView
+        android:id="@+id/itemTaxText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
+        app:layout_constraintStart_toStartOf="@id/guidelineFirstThird"
+        app:layout_constraintEnd_toStartOf="@id/guidelineSecondThird"
+        app:layout_constraintTop_toBottomOf="@id/itemNameText"
+        tools:text="$0.33"/>
+
+    <TextView
+        android:id="@+id/itemQuantityText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
+        app:layout_constraintStart_toStartOf="@id/guidelineSecondThird"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/itemNameText"
+        tools:text="x3"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
