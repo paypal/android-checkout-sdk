@@ -1,0 +1,59 @@
+<resources>
+    <string name="app_name">Android Native Checkout Samples</string>
+
+    <string name="quickstart_navigation_start_checkout_with_orders">startCheckoutWithOrders Sample</string>
+    <string name="quickstart_navigation_start_checkout_with_token_v2">startCheckoutWithToken (Orders v2) Sample</string>
+
+    <string name="orders_quick_start_activity_title">Orders Quick Start</string>
+    <string name="orders_quick_start_activity_configuration_options_title">Configure startCheckoutWithOrders</string>
+    <string name="orders_quick_start_activity_configuration_user_action_label">User Action:</string>
+    <string name="orders_quick_start_activity_configuration_user_action_option_continue">Continue</string>
+    <string name="orders_quick_start_activity_configuration_user_action_option_pay_now">Pay Now</string>
+    <string name="orders_quick_start_activity_configuration_intent_label">Order Intent:</string>
+    <string name="orders_quick_start_activity_configuration_intent_option_capture">Capture</string>
+    <string name="orders_quick_start_activity_configuration_intent_option_authorize">Authorize</string>
+    <string name="orders_quick_start_activity_configuration_landing_page_label">Landing Page:</string>
+    <string name="orders_quick_start_activity_configuration_landing_page_option_no_preference">No Preference</string>
+    <string name="orders_quick_start_activity_configuration_landing_page_option_login">Login</string>
+    <string name="orders_quick_start_activity_configuration_landing_page_option_billing">Billing</string>
+    <string name="orders_quick_start_activity_configuration_currency_code_label">Currency Code:</string>
+    <string name="orders_quick_start_activity_configuration_currency_code_option_usd">USD</string>
+    <string name="orders_quick_start_activity_configuration_currency_code_option_eur">EUR</string>
+    <string name="orders_quick_start_activity_configuration_currency_code_option_gbp">GBP</string>
+    <string name="orders_quick_start_activity_items_title">Add Items To Your Order</string>
+    <string name="orders_quick_start_activity_items_add_button">+</string>
+    <string name="orders_quick_start_activity_shipping_preference_title">Shipping Preferences</string>
+    <string name="orders_quick_start_activity_shipping_preference_label">Shipping Preference:</string>
+    <string name="orders_quick_start_activity_shipping_preference_option_get_from_file">Get From File</string>
+    <string name="orders_quick_start_activity_shipping_preference_option_no_shipping">No Shipping</string>
+    <string name="orders_quick_start_activity_shipping_preference_option_set_provided_address">Set Provided Address</string>
+    <string name="orders_quick_start_activity_shipping_callbacks_switch_label">Enable Shipping Callbacks?</string>
+    <string name="orders_quick_start_activity_submit_order_button">Place Order</string>
+    <string name="orders_quick_start_activity_created_item_quantity">x%1$s</string>
+
+    <string name="token_quick_start_activity_configuration_options_title">Configure startCheckoutWithToken</string>
+    <string name="token_quick_start_activity_configuration_user_action_label">@string/orders_quick_start_activity_configuration_user_action_label</string>
+    <string name="token_quick_start_activity_configuration_user_action_option_continue">@string/orders_quick_start_activity_configuration_user_action_option_continue</string>
+    <string name="token_quick_start_activity_configuration_user_action_option_pay_now">@string/orders_quick_start_activity_configuration_user_action_option_pay_now</string>
+    <string name="token_quick_start_activity_configuration_intent_label">@string/orders_quick_start_activity_configuration_intent_label</string>
+    <string name="token_quick_start_activity_configuration_intent_option_capture">@string/orders_quick_start_activity_configuration_intent_option_capture</string>
+    <string name="token_quick_start_activity_configuration_intent_option_authorize">@string/orders_quick_start_activity_configuration_intent_option_authorize</string>
+    <string name="token_quick_start_activity_configuration_currency_code_label">@string/orders_quick_start_activity_configuration_currency_code_label</string>
+    <string name="token_quick_start_activity_configuration_currency_code_option_usd">@string/orders_quick_start_activity_configuration_currency_code_option_usd</string>
+    <string name="token_quick_start_activity_configuration_currency_code_option_eur">@string/orders_quick_start_activity_configuration_currency_code_option_eur</string>
+    <string name="token_quick_start_activity_configuration_currency_code_option_gbp">@string/orders_quick_start_activity_configuration_currency_code_option_gbp</string>
+    <string name="token_quick_start_activity_total_amount_hint">Total Amount</string>
+    <string name="token_quick_start_activity_submit_order_button">@string/orders_quick_start_activity_submit_order_button</string>
+
+    <string name="dialog_create_item_title">Create An Item</string>
+    <string name="dialog_create_item_name_hint">Item Name</string>
+    <string name="dialog_create_item_quantity_hint">Quantity</string>
+    <string name="dialog_create_item_amount_hint">Amount</string>
+    <string name="dialog_create_item_tax_amount_hint">Tax Amount</string>
+    <string name="dialog_create_item_category_label">Item Category:</string>
+    <string name="dialog_create_item_category_option_physical_goods">Physical Goods</string>
+    <string name="dialog_create_item_category_option_digital_goods">Digital Goods</string>
+    <string name="dialog_create_item_button">Create Item</string>
+
+    <string name="dialog_checkout_complete_title">Checkout Complete</string>
+</resources>
