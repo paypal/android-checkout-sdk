@@ -28,4 +28,9 @@
         <item name="android:textAppearance">@style/TextAppearance.MaterialComponents.Body2</item>
     </style>
 
+    <style name="ErrorText">
+        <item name="android:textAppearance">@style/TextAppearance.MaterialComponents.Body1</item>
+        <item name="android:textColor">@color/design_default_color_error</item>
+    </style>
+
 </resources>

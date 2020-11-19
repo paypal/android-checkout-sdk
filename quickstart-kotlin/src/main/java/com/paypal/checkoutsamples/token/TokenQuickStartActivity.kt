@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.widget.addTextChangedListener
 import com.paypal.checkoutsamples.CheckoutConfigHandler
 import com.paypal.checkoutsamples.R
 import com.paypal.checkoutsamples.sdkhelper.CurrencyCode
@@ -96,7 +97,14 @@ class TokenQuickStartActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_token_quick_start)
 
+        totalAmountInput.editText?.addTextChangedListener { totalAmountInput.error = null }
+
         submitTokenButton.setOnClickListener { button ->
+            if (totalAmountInput.editText!!.text.isEmpty()) {
+                totalAmountInput.error = getString(R.string.token_quick_start_activity_total_amount_required)
+                return@setOnClickListener
+            }
+
             button.isEnabled = false
             val orderRequest = createOrderRequest()
 

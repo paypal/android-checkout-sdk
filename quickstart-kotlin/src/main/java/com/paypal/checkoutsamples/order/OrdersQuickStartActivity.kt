@@ -5,6 +5,7 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.snackbar.Snackbar
 import com.paypal.checkoutsamples.CheckoutConfigHandler
@@ -107,7 +108,11 @@ class OrdersQuickStartActivity : AppCompatActivity() {
             createItemDialog.show(supportFragmentManager, "CreateItemDialog")
         }
         submitOrderButton.setOnClickListener {
-            startCheckoutWithSampleOrders(createdItems, selectedCurrencyCode)
+            if (createdItems.isEmpty()) {
+                itemErrorTextView.visibility = View.VISIBLE
+            } else {
+                startCheckoutWithSampleOrders(createdItems, selectedCurrencyCode)
+            }
         }
     }
 
@@ -126,6 +131,7 @@ class OrdersQuickStartActivity : AppCompatActivity() {
         itemsContainer.addView(itemView)
 
         createdItems.add(createdItem)
+        itemErrorTextView.visibility = View.GONE
     }
 
     private fun startCheckoutWithSampleOrders(

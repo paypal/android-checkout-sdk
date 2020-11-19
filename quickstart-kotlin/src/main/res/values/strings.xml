@@ -22,6 +22,7 @@
     <string name="orders_quick_start_activity_configuration_currency_code_option_gbp">GBP</string>
     <string name="orders_quick_start_activity_items_title">Add Items To Your Order</string>
     <string name="orders_quick_start_activity_items_add_button">+</string>
+    <string name="orders_quick_start_activity_items_error">At least one item is required</string>
     <string name="orders_quick_start_activity_shipping_preference_title">Shipping Preferences</string>
     <string name="orders_quick_start_activity_shipping_preference_label">Shipping Preference:</string>
     <string name="orders_quick_start_activity_shipping_preference_option_get_from_file">Get From File</string>
@@ -43,6 +44,7 @@
     <string name="token_quick_start_activity_configuration_currency_code_option_eur">@string/orders_quick_start_activity_configuration_currency_code_option_eur</string>
     <string name="token_quick_start_activity_configuration_currency_code_option_gbp">@string/orders_quick_start_activity_configuration_currency_code_option_gbp</string>
     <string name="token_quick_start_activity_total_amount_hint">Total Amount</string>
+    <string name="token_quick_start_activity_total_amount_required">Total Amount Required</string>
     <string name="token_quick_start_activity_submit_order_button">@string/orders_quick_start_activity_submit_order_button</string>
 
     <string name="dialog_create_item_title">Create An Item</string>
@@ -54,6 +56,8 @@
     <string name="dialog_create_item_category_option_physical_goods">Physical Goods</string>
     <string name="dialog_create_item_category_option_digital_goods">Digital Goods</string>
     <string name="dialog_create_item_button">Create Item</string>
+    <string name="dialog_create_error_item_category">Item Category is required</string>
+    <string name="dialog_create_error_required">Required</string>
 
     <string name="dialog_checkout_complete_title">Checkout Complete</string>
 </resources>

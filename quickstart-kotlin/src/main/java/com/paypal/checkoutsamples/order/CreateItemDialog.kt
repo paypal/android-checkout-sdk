@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.app.AlertDialog
 import android.app.Dialog
 import android.os.Bundle
+import android.view.View
 import androidx.fragment.app.DialogFragment
 import com.google.android.material.textfield.TextInputLayout
 import com.paypal.checkoutsamples.R
@@ -28,7 +29,11 @@ class CreateItemDialog : DialogFragment() {
             val dialogView = layoutInflater.inflate(R.layout.dialog_create_item, null)
 
             with(dialogView) {
+                selectItemCategory.setOnCheckedChangeListener { _, _ -> errorTextView.text = "" }
+
                 createItemButton.setOnClickListener {
+                    if (!canSaveItem(dialogView)) return@setOnClickListener
+
                     onItemCreated?.invoke(
                         CreatedItem(
                             name = itemNameInput.text,
@@ -45,6 +50,25 @@ class CreateItemDialog : DialogFragment() {
 
             dialogBuilder.setView(dialogView).create()
         } ?: throw IllegalStateException("Activity cannot be null.")
+    }
+
+    private fun canSaveItem(view: View): Boolean = with(view) {
+        itemNameInput.validateField()
+        itemQuantityInput.validateField()
+        itemAmountInput.validateField()
+        itemTaxInput.validateField()
+
+        if (!itemCategoryPhysicalGoods.isChecked && !itemCategoryDigitalGoods.isChecked) {
+            errorTextView.text = getString(R.string.dialog_create_error_item_category)
+        }
+
+        return itemNameInput.text.isNotEmpty() && itemQuantityInput.text.isNotEmpty()
+                && itemAmountInput.text.isNotEmpty() && itemTaxInput.text.isNotEmpty()
+                && (itemCategoryPhysicalGoods.isChecked || itemCategoryDigitalGoods.isChecked)
+    }
+
+    private fun TextInputLayout.validateField() {
+        if (text.isEmpty()) error = getString(R.string.dialog_create_error_required)
     }
 
     private fun selectedItemCategory(selectedId: Int): ItemCategory {
