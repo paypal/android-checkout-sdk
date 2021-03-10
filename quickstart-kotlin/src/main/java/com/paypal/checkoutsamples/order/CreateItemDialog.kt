@@ -8,7 +8,7 @@ import android.view.View
 import androidx.fragment.app.DialogFragment
 import com.google.android.material.textfield.TextInputLayout
 import com.paypal.checkoutsamples.R
-import com.paypal.checkoutsamples.sdkhelper.ItemCategory
+import com.paypal.pyplcheckout.merchantIntegration.createorder.ItemCategory
 import kotlinx.android.synthetic.main.dialog_create_item.view.*
 
 /**

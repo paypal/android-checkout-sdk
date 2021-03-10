@@ -42,9 +42,7 @@ android {
 
 dependencies {
     // PayPal Checkout SDK Libraries
-    implementation('com.paypal.pyplcheckout:externalRelease:1.2.0@aar') {
-        transitive = true
-    }
+    implementation 'com.paypal.checkout:android-sdk:0.1.0-SNAPSHOT'
 
     // Other Dependencies Related To Sample App
     implementation fileTree(dir: "libs", include: ["*.jar"])

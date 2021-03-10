@@ -12,26 +12,30 @@ import com.paypal.checkoutsamples.CheckoutConfigHandler
 import com.paypal.checkoutsamples.R
 import com.paypal.checkoutsamples.order.usecase.CreateOrderRequest
 import com.paypal.checkoutsamples.order.usecase.CreateOrderUseCase
-import com.paypal.checkoutsamples.sdkhelper.CurrencyCode
-import com.paypal.checkoutsamples.sdkhelper.OrderIntent
-import com.paypal.checkoutsamples.sdkhelper.ShippingPreference
-import com.paypal.checkoutsamples.sdkhelper.UserAction
-import com.paypal.pyplcheckout.exception.PYPLException
-import com.paypal.pyplcheckout.merchantIntegration.OrderCallbacks
-import com.paypal.pyplcheckout.utils.PayPalCheckoutSdk
+import com.paypal.pyplcheckout.PayPalCheckout
+import com.paypal.pyplcheckout.merchantIntegration.approve.OnApprove
+import com.paypal.pyplcheckout.merchantIntegration.cancel.OnCancel
+import com.paypal.pyplcheckout.merchantIntegration.createorder.CreateOrder
+import com.paypal.pyplcheckout.merchantIntegration.createorder.CurrencyCode
+import com.paypal.pyplcheckout.merchantIntegration.createorder.OrderIntent
+import com.paypal.pyplcheckout.merchantIntegration.createorder.ShippingPreference
+import com.paypal.pyplcheckout.merchantIntegration.createorder.UserAction
+import com.paypal.pyplcheckout.merchantIntegration.error.OnError
+import com.paypal.pyplcheckout.merchantIntegration.order.AuthorizeOrderResult
+import com.paypal.pyplcheckout.merchantIntegration.order.CaptureOrderResult
 import kotlinx.android.synthetic.main.activity_orders_quick_start.*
 import kotlinx.android.synthetic.main.item_preview_item.view.*
 
 class OrdersQuickStartActivity : AppCompatActivity() {
 
-    private val checkoutSdk: PayPalCheckoutSdk
-        get() = PayPalCheckoutSdk.getInstance()
+    private val tag = javaClass.simpleName
+
+    private val checkoutSdk: PayPalCheckout
+        get() = PayPalCheckout
 
     private val checkoutConfigHandler: CheckoutConfigHandler by lazy {
         CheckoutConfigHandler(supportFragmentManager)
     }
-
-    private val checkoutConfig by lazy { checkoutConfigHandler.checkoutConfig }
 
     private val selectedUserAction: UserAction
         get() {
@@ -148,25 +152,52 @@ class OrdersQuickStartActivity : AppCompatActivity() {
             )
         val order = createOrderUseCase.execute(createOrderRequest)
 
-        checkoutSdk.startCheckoutWithOrders(
-            context = this,
-            order = order,
-            orderCallbacks = object : OrderCallbacks {
-                override fun onOrderCreateFailed(exception: PYPLException) {
-                    Log.w("OrderCreateFailed", exception)
-                    Snackbar.make(
-                        rootOrdersQuickStart,
-                        "Order Not Created 🔥",
-                        Snackbar.LENGTH_LONG
-                    )
-                        .show()
-                }
-
-                override fun onOrderCreated(id: String) {
-                    Log.i("OrderCreated", "id: $id")
+        checkoutSdk.start(
+            createOrder = CreateOrder { actions ->
+                actions.create(order) { id ->
+                    Log.d(tag, "Order ID: $id")
                 }
             },
-            checkoutConfig = checkoutConfig
+            onApprove = OnApprove { approval ->
+                Log.i(tag, "OnApprove: $approval")
+                when (selectedOrderIntent) {
+                    OrderIntent.AUTHORIZE -> approval.orderActions.authorize { result ->
+                        when (result) {
+                            is AuthorizeOrderResult.Success -> Snackbar.make(
+                                rootOrdersQuickStart,
+                                "💰 Order Authorization Succeeded 💰",
+                                Snackbar.LENGTH_LONG
+                            ).show()
+                            is AuthorizeOrderResult.Error -> Snackbar.make(
+                                rootOrdersQuickStart,
+                                "🔥 Order Authorization Failed 🔥",
+                                Snackbar.LENGTH_LONG
+                            ).show()
+                        }
+                    }
+                    OrderIntent.CAPTURE -> approval.orderActions.capture { result ->
+                        when (result) {
+                            is CaptureOrderResult.Success -> Snackbar.make(
+                                rootOrdersQuickStart,
+                                "💰 Order Capture Succeeded 💰",
+                                Snackbar.LENGTH_LONG
+                            ).show()
+                            is CaptureOrderResult.Error -> Snackbar.make(
+                                rootOrdersQuickStart,
+                                "🔥 Order Capture Failed 🔥",
+                                Snackbar.LENGTH_LONG
+                            ).show()
+                        }
+                    }
+                }
+            },
+            onCancel = OnCancel {
+                Log.d(tag, "OnCancel")
+                Snackbar.make(rootOrdersQuickStart, "Pay Sheet cancelled by buyer.", Snackbar.LENGTH_LONG).show()
+            },
+            onError = OnError { errorInfo ->
+                Log.d(tag, "ErrorInfo: $errorInfo")
+            }
         )
     }
 

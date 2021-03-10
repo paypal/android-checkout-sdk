@@ -1,9 +1,9 @@
 package com.paypal.checkoutsamples.order.usecase
 
 import com.paypal.checkoutsamples.order.CreatedItem
-import com.paypal.checkoutsamples.sdkhelper.CurrencyCode
-import com.paypal.checkoutsamples.sdkhelper.ShippingPreference
 import com.paypal.pyplcheckout.merchantIntegration.PurchaseUnit
+import com.paypal.pyplcheckout.merchantIntegration.createorder.CurrencyCode
+import com.paypal.pyplcheckout.merchantIntegration.createorder.ShippingPreference
 import java.util.UUID
 
 /**

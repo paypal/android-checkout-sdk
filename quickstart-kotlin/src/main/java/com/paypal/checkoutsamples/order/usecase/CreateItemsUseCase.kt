@@ -1,9 +1,9 @@
 package com.paypal.checkoutsamples.order.usecase
 
 import com.paypal.checkoutsamples.order.CreatedItem
-import com.paypal.checkoutsamples.sdkhelper.CurrencyCode
 import com.paypal.pyplcheckout.merchantIntegration.Items
 import com.paypal.pyplcheckout.merchantIntegration.UnitAmount
+import com.paypal.pyplcheckout.merchantIntegration.createorder.CurrencyCode
 
 /**
  * CreateItemRequest contains all of the necessary properties to successfully create a list of Items
@@ -23,17 +23,17 @@ class CreateItemsUseCase {
             Items.Builder()
                 .name(createdItem.name)
                 .quantity(createdItem.quantity)
-                .category(createdItem.itemCategory.name)
+                .category(createdItem.itemCategory)
                 .unitAmount(
                     UnitAmount.Builder()
                         .value(createdItem.amount)
-                        .currencyCode(currencyCode.name)
+                        .currencyCode(currencyCode)
                         .build()
                 )
                 .tax(
                     UnitAmount.Builder()
                         .value(createdItem.taxAmount)
-                        .currencyCode(currencyCode.name)
+                        .currencyCode(currencyCode)
                         .build()
                 )
                 .build()
