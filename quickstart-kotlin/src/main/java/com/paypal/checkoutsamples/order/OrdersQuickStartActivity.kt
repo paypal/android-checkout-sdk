@@ -8,11 +8,10 @@ import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.snackbar.Snackbar
-import com.paypal.checkoutsamples.CheckoutConfigHandler
+import com.paypal.checkout.PayPalCheckout
 import com.paypal.checkoutsamples.R
 import com.paypal.checkoutsamples.order.usecase.CreateOrderRequest
 import com.paypal.checkoutsamples.order.usecase.CreateOrderUseCase
-import com.paypal.pyplcheckout.PayPalCheckout
 import com.paypal.pyplcheckout.merchantIntegration.approve.OnApprove
 import com.paypal.pyplcheckout.merchantIntegration.cancel.OnCancel
 import com.paypal.pyplcheckout.merchantIntegration.createorder.CreateOrder
@@ -32,10 +31,6 @@ class OrdersQuickStartActivity : AppCompatActivity() {
 
     private val checkoutSdk: PayPalCheckout
         get() = PayPalCheckout
-
-    private val checkoutConfigHandler: CheckoutConfigHandler by lazy {
-        CheckoutConfigHandler(supportFragmentManager)
-    }
 
     private val selectedUserAction: UserAction
         get() {
@@ -142,6 +137,10 @@ class OrdersQuickStartActivity : AppCompatActivity() {
         createdItems: List<CreatedItem>,
         currencyCode: CurrencyCode
     ) {
+        fun showSnackbar(text: String) {
+            Snackbar.make(rootOrdersQuickStart, text, Snackbar.LENGTH_LONG).show()
+        }
+
         val createOrderRequest =
             CreateOrderRequest(
                 orderIntent = selectedOrderIntent,
@@ -162,41 +161,40 @@ class OrdersQuickStartActivity : AppCompatActivity() {
                 Log.i(tag, "OnApprove: $approval")
                 when (selectedOrderIntent) {
                     OrderIntent.AUTHORIZE -> approval.orderActions.authorize { result ->
-                        when (result) {
-                            is AuthorizeOrderResult.Success -> Snackbar.make(
-                                rootOrdersQuickStart,
-                                "💰 Order Authorization Succeeded 💰",
-                                Snackbar.LENGTH_LONG
-                            ).show()
-                            is AuthorizeOrderResult.Error -> Snackbar.make(
-                                rootOrdersQuickStart,
-                                "🔥 Order Authorization Failed 🔥",
-                                Snackbar.LENGTH_LONG
-                            ).show()
+                        val message = when (result) {
+                            is AuthorizeOrderResult.Success -> {
+                                Log.i(tag, "Success: $result")
+                                "💰 Order Authorization Succeeded 💰"
+                            }
+                            is AuthorizeOrderResult.Error -> {
+                                Log.i(tag, "Error: $result")
+                                "🔥 Order Authorization Failed 🔥"
+                            }
                         }
+                        showSnackbar(message)
                     }
                     OrderIntent.CAPTURE -> approval.orderActions.capture { result ->
-                        when (result) {
-                            is CaptureOrderResult.Success -> Snackbar.make(
-                                rootOrdersQuickStart,
-                                "💰 Order Capture Succeeded 💰",
-                                Snackbar.LENGTH_LONG
-                            ).show()
-                            is CaptureOrderResult.Error -> Snackbar.make(
-                                rootOrdersQuickStart,
-                                "🔥 Order Capture Failed 🔥",
-                                Snackbar.LENGTH_LONG
-                            ).show()
+                        val message = when (result) {
+                            is CaptureOrderResult.Success -> {
+                                Log.i(tag, "Success: $result")
+                                "💰 Order Capture Succeeded 💰"
+                            }
+                            is CaptureOrderResult.Error -> {
+                                Log.i(tag, "Error: $result")
+                                "🔥 Order Capture Failed 🔥"
+                            }
                         }
+                        showSnackbar(message)
                     }
                 }
             },
             onCancel = OnCancel {
                 Log.d(tag, "OnCancel")
-                Snackbar.make(rootOrdersQuickStart, "Pay Sheet cancelled by buyer.", Snackbar.LENGTH_LONG).show()
+                showSnackbar("😭 Buyer Cancelled Checkout 😭")
             },
             onError = OnError { errorInfo ->
                 Log.d(tag, "ErrorInfo: $errorInfo")
+                showSnackbar("🚨 An Error Occurred 🚨")
             }
         )
     }
