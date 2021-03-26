@@ -1,8 +1,8 @@
 <resources>
     <string name="app_name">Android Native Checkout Samples</string>
 
-    <string name="quickstart_navigation_start_checkout_with_orders">startCheckoutWithOrders Sample</string>
-    <string name="quickstart_navigation_start_checkout_with_token_v2">startCheckoutWithToken (Orders v2) Sample</string>
+    <string name="quickstart_navigation_start_checkout_with_orders">Client Side Only Sample</string>
+    <string name="quickstart_navigation_start_checkout_with_token_v2">Server Side Sample</string>
 
     <string name="orders_quick_start_activity_title">Orders Quick Start</string>
     <string name="orders_quick_start_activity_configuration_options_title">Configure startCheckoutWithOrders</string>
