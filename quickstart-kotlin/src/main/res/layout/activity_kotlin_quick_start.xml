@@ -27,4 +27,14 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/buyWithOrder" />
 
+    <Button
+        android:id="@+id/buyWithPaymentButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/quickstart_navigation_start_payment_button"
+        android:textAllCaps="false"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/buyWithOrderToken" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

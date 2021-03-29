@@ -23,6 +23,9 @@
             android:name=".order.OrdersQuickStartActivity"
             android:label="@string/orders_quick_start_activity_title" />
         <activity
+            android:name=".paymentbutton.PaymentButtonQuickStartActivity"
+            android:label="@string/payment_button_quick_start_activity_title" />
+        <activity
             android:name=".token.TokenQuickStartActivity"
             android:label="@string/token_quick_start_activity_configuration_options_title" />
     </application>

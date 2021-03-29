@@ -3,6 +3,7 @@ package com.paypal.checkoutsamples
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.paypal.checkoutsamples.order.OrdersQuickStartActivity
+import com.paypal.checkoutsamples.paymentbutton.PaymentButtonQuickStartActivity
 import com.paypal.checkoutsamples.token.TokenQuickStartActivity
 import kotlinx.android.synthetic.main.activity_kotlin_quick_start.*
 
@@ -17,6 +18,10 @@ class KotlinQuickStartActivity : AppCompatActivity() {
 
         buyWithOrderToken.setOnClickListener {
             startActivity(TokenQuickStartActivity.startIntent(this))
+        }
+
+        buyWithPaymentButton.setOnClickListener {
+            startActivity(PaymentButtonQuickStartActivity.startIntent(this))
         }
     }
 }
