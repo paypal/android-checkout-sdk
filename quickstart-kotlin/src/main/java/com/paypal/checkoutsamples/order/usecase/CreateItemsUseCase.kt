@@ -1,9 +1,9 @@
 package com.paypal.checkoutsamples.order.usecase
 
+import com.paypal.checkout.createorder.CurrencyCode
+import com.paypal.checkout.order.Items
+import com.paypal.checkout.order.UnitAmount
 import com.paypal.checkoutsamples.order.CreatedItem
-import com.paypal.pyplcheckout.merchantIntegration.Items
-import com.paypal.pyplcheckout.merchantIntegration.UnitAmount
-import com.paypal.pyplcheckout.merchantIntegration.createorder.CurrencyCode
 
 /**
  * CreateItemRequest contains all of the necessary properties to successfully create a list of Items

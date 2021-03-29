@@ -1,8 +1,8 @@
 package com.paypal.checkoutsamples.token.repository.request
 
-import com.paypal.pyplcheckout.merchantIntegration.createorder.CurrencyCode
-import com.paypal.pyplcheckout.merchantIntegration.createorder.OrderIntent
-import com.paypal.pyplcheckout.merchantIntegration.createorder.UserAction
+import com.paypal.checkout.createorder.CurrencyCode
+import com.paypal.checkout.createorder.OrderIntent
+import com.paypal.checkout.createorder.UserAction
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 

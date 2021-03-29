@@ -2,11 +2,11 @@ package com.paypal.checkoutsamples
 
 import android.app.Application
 import com.paypal.checkout.PayPalCheckout
-import com.paypal.pyplcheckout.merchantIntegration.config.CheckoutConfig
-import com.paypal.pyplcheckout.merchantIntegration.config.Environment
-import com.paypal.pyplcheckout.merchantIntegration.config.SettingsConfig
-import com.paypal.pyplcheckout.merchantIntegration.createorder.CurrencyCode
-import com.paypal.pyplcheckout.merchantIntegration.createorder.UserAction
+import com.paypal.checkout.config.CheckoutConfig
+import com.paypal.checkout.config.Environment
+import com.paypal.checkout.config.SettingsConfig
+import com.paypal.checkout.createorder.CurrencyCode
+import com.paypal.checkout.createorder.UserAction
 
 class QuickStartApp : Application() {
     override fun onCreate() {

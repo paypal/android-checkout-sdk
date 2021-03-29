@@ -1,10 +1,10 @@
 package com.paypal.checkoutsamples.order.usecase
 
+import com.paypal.checkout.createorder.CurrencyCode
+import com.paypal.checkout.order.Amount
+import com.paypal.checkout.order.BreakDown
+import com.paypal.checkout.order.UnitAmount
 import com.paypal.checkoutsamples.order.CreatedItem
-import com.paypal.pyplcheckout.merchantIntegration.Amount
-import com.paypal.pyplcheckout.merchantIntegration.BreakDown
-import com.paypal.pyplcheckout.merchantIntegration.UnitAmount
-import com.paypal.pyplcheckout.merchantIntegration.createorder.CurrencyCode
 import java.math.BigDecimal
 import java.math.RoundingMode
 import java.text.DecimalFormat

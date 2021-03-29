@@ -7,6 +7,10 @@ import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.addTextChangedListener
 import com.paypal.checkout.PayPalCheckout
+import com.paypal.checkout.createorder.CreateOrder
+import com.paypal.checkout.createorder.CurrencyCode
+import com.paypal.checkout.createorder.OrderIntent
+import com.paypal.checkout.createorder.UserAction
 import com.paypal.checkoutsamples.R
 import com.paypal.checkoutsamples.token.repository.CheckoutApi
 import com.paypal.checkoutsamples.token.repository.CreatedOrder
@@ -15,14 +19,8 @@ import com.paypal.checkoutsamples.token.repository.request.AmountRequest
 import com.paypal.checkoutsamples.token.repository.request.ApplicationContextRequest
 import com.paypal.checkoutsamples.token.repository.request.OrderRequest
 import com.paypal.checkoutsamples.token.repository.request.PurchaseUnitRequest
-import com.paypal.pyplcheckout.merchantIntegration.createorder.CreateOrder
-import com.paypal.pyplcheckout.merchantIntegration.createorder.CurrencyCode
-import com.paypal.pyplcheckout.merchantIntegration.createorder.OrderIntent
-import com.paypal.pyplcheckout.merchantIntegration.createorder.UserAction
 import kotlinx.android.synthetic.main.activity_token_quick_start.*
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.SupervisorJob
+import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.cancelChildren
 import kotlinx.coroutines.launch
 import java.io.IOException
@@ -84,7 +82,7 @@ class TokenQuickStartActivity : AppCompatActivity() {
     private val enteredAmount: String
         get() = totalAmountInput.editText!!.text.toString()
 
-    private val uiScope = CoroutineScope(Dispatchers.Main + SupervisorJob())
+    private val uiScope = MainScope()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

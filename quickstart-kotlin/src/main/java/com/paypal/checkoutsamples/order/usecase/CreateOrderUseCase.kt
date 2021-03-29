@@ -1,12 +1,12 @@
 package com.paypal.checkoutsamples.order.usecase
 
+import com.paypal.checkout.createorder.CurrencyCode
+import com.paypal.checkout.createorder.OrderIntent
+import com.paypal.checkout.createorder.ShippingPreference
+import com.paypal.checkout.createorder.UserAction
+import com.paypal.checkout.order.AppContext
+import com.paypal.checkout.order.Order
 import com.paypal.checkoutsamples.order.CreatedItem
-import com.paypal.pyplcheckout.merchantIntegration.AppContext
-import com.paypal.pyplcheckout.merchantIntegration.Order
-import com.paypal.pyplcheckout.merchantIntegration.createorder.CurrencyCode
-import com.paypal.pyplcheckout.merchantIntegration.createorder.OrderIntent
-import com.paypal.pyplcheckout.merchantIntegration.createorder.ShippingPreference
-import com.paypal.pyplcheckout.merchantIntegration.createorder.UserAction
 
 /**
  * CreateOrderRequest contains all of the necessary properties to successfully create an [Order] with
