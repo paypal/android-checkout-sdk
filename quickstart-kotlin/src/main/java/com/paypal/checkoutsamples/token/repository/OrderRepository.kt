@@ -18,12 +18,13 @@ class OrderRepository(
     private val authTokenRepository: AuthTokenRepository = AuthTokenRepository(checkoutApi),
     private val dispatcher: CoroutineDispatcher = Dispatchers.IO
 ) {
-    private val tag = this::class.java.toString()
+    private val tag = javaClass.simpleName
 
     /**
      * Creates a new Order ([CreatedOrder]) given a [CreateOrderRequest].
      */
     suspend fun create(request: CreateOrderRequest): CreatedOrder {
+        Log.d(tag, "Create order request: $request")
         val token = authTokenRepository.retrieve()
         return try {
             withContext(dispatcher) {

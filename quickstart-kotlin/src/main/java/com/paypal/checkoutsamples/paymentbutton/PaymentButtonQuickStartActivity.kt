@@ -22,14 +22,14 @@ import kotlinx.android.synthetic.main.activity_payment_button_quick_start.*
 
 class PaymentButtonQuickStartActivity : AppCompatActivity() {
 
-    private val TAG = javaClass.simpleName
+    private val tag = javaClass.simpleName
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_payment_button_quick_start)
         paymentButton.onEligibilityStatusChanged = { buttonEligibilityStatus: PaymentButtonEligibilityStatus ->
-            Log.v(TAG, "OnEligibilityStatusChanged")
-            Log.d(TAG, "Button eligibility status: $buttonEligibilityStatus")
+            Log.v(tag, "OnEligibilityStatusChanged")
+            Log.d(tag, "Button eligibility status: $buttonEligibilityStatus")
         }
         setupPaymentButton()
     }
@@ -37,7 +37,7 @@ class PaymentButtonQuickStartActivity : AppCompatActivity() {
     private fun setupPaymentButton() {
         paymentButton.setup(
             createOrder = CreateOrder { createOrderActions ->
-                Log.v(TAG, "CreateOrder")
+                Log.v(tag, "CreateOrder")
                 createOrderActions.create(
                     Order.Builder()
                         .appContext(
@@ -59,24 +59,24 @@ class PaymentButtonQuickStartActivity : AppCompatActivity() {
                             )
                         )
                         .build()
-                        .also { Log.d(TAG, "Order: $it") }
+                        .also { Log.d(tag, "Order: $it") }
                 )
             },
             onApprove = OnApprove { approval ->
-                Log.v(TAG, "OnApprove")
-                Log.d(TAG, "Approval details: $approval")
+                Log.v(tag, "OnApprove")
+                Log.d(tag, "Approval details: $approval")
                 approval.orderActions.capture { captureOrderResult ->
-                    Log.v(TAG, "Capture Order")
-                    Log.d(TAG, "Capture order result: $captureOrderResult")
+                    Log.v(tag, "Capture Order")
+                    Log.d(tag, "Capture order result: $captureOrderResult")
                 }
             },
             onCancel = OnCancel {
-                Log.v(TAG, "OnCancel")
-                Log.d(TAG, "Buyer cancelled the checkout experience.")
+                Log.v(tag, "OnCancel")
+                Log.d(tag, "Buyer cancelled the checkout experience.")
             },
             onError = OnError { errorInfo ->
-                Log.v(TAG, "OnError")
-                Log.d(TAG, "Error details: $errorInfo")
+                Log.v(tag, "OnError")
+                Log.d(tag, "Error details: $errorInfo")
             }
         )
     }

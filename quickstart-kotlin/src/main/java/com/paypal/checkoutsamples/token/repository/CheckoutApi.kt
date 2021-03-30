@@ -4,15 +4,19 @@ import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFact
 import com.paypal.checkoutsamples.PAYPAL_CLIENT_ID
 import com.paypal.checkoutsamples.PAYPAL_SECRET
 import com.paypal.checkoutsamples.token.repository.request.OrderRequest
-import com.paypal.checkoutsamples.token.repository.response.OrderResponse
 import com.paypal.checkoutsamples.token.repository.response.OAuthTokenResponse
-import kotlinx.serialization.UnstableDefault
+import com.paypal.checkoutsamples.token.repository.response.OrderResponse
+import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.json.Json
-import kotlinx.serialization.json.JsonConfiguration
 import okhttp3.Credentials
 import okhttp3.MediaType
 import retrofit2.Retrofit
-import retrofit2.http.*
+import retrofit2.http.Body
+import retrofit2.http.Field
+import retrofit2.http.FormUrlEncoded
+import retrofit2.http.Header
+import retrofit2.http.Headers
+import retrofit2.http.POST
 
 /**
  * CheckoutApi includes the necessary endpoints for creating an order and receiving an EC token that
@@ -65,11 +69,11 @@ interface CheckoutApi {
          *
          * Example: val checkoutApi = CheckoutApi()
          */
-        @OptIn(UnstableDefault::class)
+        @ExperimentalSerializationApi
         operator fun invoke(): CheckoutApi {
-            val json = Json(
-                JsonConfiguration(ignoreUnknownKeys = true)
-            )
+            val json = Json {
+                ignoreUnknownKeys = true
+            }
             val retrofit = Retrofit.Builder()
                 .baseUrl("https://api.sandbox.paypal.com/")
                 .addConverterFactory(

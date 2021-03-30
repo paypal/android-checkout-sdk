@@ -1,8 +1,6 @@
 package com.paypal.checkoutsamples.token.repository.request
 
 import com.paypal.checkout.createorder.CurrencyCode
-import com.paypal.checkout.createorder.OrderIntent
-import com.paypal.checkout.createorder.UserAction
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
@@ -19,11 +17,12 @@ import kotlinx.serialization.Serializable
  */
 @Serializable
 data class OrderRequest(
-    val intent: String = OrderIntent.CAPTURE.name,
+    @SerialName("intent")
+    val intent: String,
     @SerialName("application_context")
-    val applicationContext: ApplicationContextRequest = ApplicationContextRequest(),
+    val applicationContext: ApplicationContextRequest,
     @SerialName("purchase_units")
-    val purchaseUnits: List<PurchaseUnitRequest> = listOf(PurchaseUnitRequest())
+    val purchaseUnits: List<PurchaseUnitRequest>
 )
 
 /**
@@ -38,7 +37,7 @@ data class OrderRequest(
 @Serializable
 data class ApplicationContextRequest(
     @SerialName("user_action")
-    val userAction: String = UserAction.PAY_NOW.name
+    val userAction: String,
 )
 
 /**
@@ -51,7 +50,8 @@ data class ApplicationContextRequest(
  */
 @Serializable
 data class PurchaseUnitRequest(
-    val amount: AmountRequest = AmountRequest()
+    @SerialName("amount")
+    val amount: AmountRequest,
 )
 
 /**
@@ -68,6 +68,7 @@ data class PurchaseUnitRequest(
 @Serializable
 data class AmountRequest(
     @SerialName("currency_code")
-    val currencyCode: String = CurrencyCode.USD.name,
+    val currencyCode: String,
+    @SerialName("value")
     val value: String = "0.01"
 )
