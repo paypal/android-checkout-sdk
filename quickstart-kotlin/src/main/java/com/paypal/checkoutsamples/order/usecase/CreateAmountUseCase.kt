@@ -1,10 +1,10 @@
 package com.paypal.checkoutsamples.order.usecase
 
+import com.paypal.checkout.createorder.CurrencyCode
+import com.paypal.checkout.order.Amount
+import com.paypal.checkout.order.BreakDown
+import com.paypal.checkout.order.UnitAmount
 import com.paypal.checkoutsamples.order.CreatedItem
-import com.paypal.checkoutsamples.sdkhelper.CurrencyCode
-import com.paypal.pyplcheckout.merchantIntegration.Amount
-import com.paypal.pyplcheckout.merchantIntegration.BreakDown
-import com.paypal.pyplcheckout.merchantIntegration.UnitAmount
 import java.math.BigDecimal
 import java.math.RoundingMode
 import java.text.DecimalFormat
@@ -43,7 +43,7 @@ class CreateAmountUseCase {
             .subtract(itemDiscountTotal)
 
         return Amount.Builder()
-            .currencyCode(currencyCode.name)
+            .currencyCode(currencyCode)
             .value(totalValue.asMoneyString)
             .breakdown(
                 BreakDown.Builder()
@@ -61,7 +61,7 @@ class CreateAmountUseCase {
     private fun BigDecimal.unitAmountFor(currencyCode: CurrencyCode): UnitAmount {
         return UnitAmount.Builder()
             .value(asMoneyString)
-            .currencyCode(currencyCode.name)
+            .currencyCode(currencyCode)
             .build()
     }
 

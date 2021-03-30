@@ -1,9 +1,9 @@
 package com.paypal.checkoutsamples.order.usecase
 
-import com.paypal.checkoutsamples.sdkhelper.CurrencyCode
-import com.paypal.checkoutsamples.sdkhelper.ShippingPreference
-import com.paypal.pyplcheckout.merchantIntegration.Address
-import com.paypal.pyplcheckout.merchantIntegration.Shipping
+import com.paypal.checkout.createorder.CurrencyCode
+import com.paypal.checkout.createorder.ShippingPreference
+import com.paypal.checkout.order.Address
+import com.paypal.checkout.order.Shipping
 
 /**
  * CreateOrderRequest contains all of the necessary properties to successfully create a [Shipping]

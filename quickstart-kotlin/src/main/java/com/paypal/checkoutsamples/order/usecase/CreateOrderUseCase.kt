@@ -1,12 +1,12 @@
 package com.paypal.checkoutsamples.order.usecase
 
+import com.paypal.checkout.createorder.CurrencyCode
+import com.paypal.checkout.createorder.OrderIntent
+import com.paypal.checkout.createorder.ShippingPreference
+import com.paypal.checkout.createorder.UserAction
+import com.paypal.checkout.order.AppContext
+import com.paypal.checkout.order.Order
 import com.paypal.checkoutsamples.order.CreatedItem
-import com.paypal.checkoutsamples.sdkhelper.CurrencyCode
-import com.paypal.checkoutsamples.sdkhelper.OrderIntent
-import com.paypal.checkoutsamples.sdkhelper.ShippingPreference
-import com.paypal.checkoutsamples.sdkhelper.UserAction
-import com.paypal.pyplcheckout.merchantIntegration.AppContext
-import com.paypal.pyplcheckout.merchantIntegration.Order
 
 /**
  * CreateOrderRequest contains all of the necessary properties to successfully create an [Order] with
@@ -36,13 +36,13 @@ class CreateOrderUseCase(
         val purchaseUnit = createPurchaseUnitUseCase.execute(createPurchaseUnitRequest)
 
         return Order.Builder()
-            .intent(orderIntent.name)
+            .intent(orderIntent)
             .purchaseUnitList(listOf(purchaseUnit))
             .appContext(
                 AppContext.Builder()
                     .brandName("Acme Inc")
-                    .userAction(userAction.name)
-                    .shippingPreference(shippingPreference.name)
+                    .userAction(userAction)
+                    .shippingPreference(shippingPreference)
                     .build()
             )
             .build()

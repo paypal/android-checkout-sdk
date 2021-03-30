@@ -6,22 +6,21 @@ import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.addTextChangedListener
-import com.paypal.checkoutsamples.CheckoutConfigHandler
+import com.paypal.checkout.PayPalCheckout
+import com.paypal.checkout.createorder.CreateOrder
+import com.paypal.checkout.createorder.CurrencyCode
+import com.paypal.checkout.createorder.OrderIntent
+import com.paypal.checkout.createorder.UserAction
 import com.paypal.checkoutsamples.R
-import com.paypal.checkoutsamples.sdkhelper.CurrencyCode
-import com.paypal.checkoutsamples.sdkhelper.OrderIntent
-import com.paypal.checkoutsamples.sdkhelper.UserAction
 import com.paypal.checkoutsamples.token.repository.CheckoutApi
+import com.paypal.checkoutsamples.token.repository.CreatedOrder
 import com.paypal.checkoutsamples.token.repository.OrderRepository
 import com.paypal.checkoutsamples.token.repository.request.AmountRequest
 import com.paypal.checkoutsamples.token.repository.request.ApplicationContextRequest
 import com.paypal.checkoutsamples.token.repository.request.OrderRequest
 import com.paypal.checkoutsamples.token.repository.request.PurchaseUnitRequest
-import com.paypal.pyplcheckout.utils.PayPalCheckoutSdk
 import kotlinx.android.synthetic.main.activity_token_quick_start.*
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.SupervisorJob
+import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.cancelChildren
 import kotlinx.coroutines.launch
 import java.io.IOException
@@ -34,16 +33,8 @@ class TokenQuickStartActivity : AppCompatActivity() {
 
     private val orderRepository = OrderRepository(checkoutApi)
 
-    private val checkoutSdk: PayPalCheckoutSdk
-        get() = PayPalCheckoutSdk.getInstance()
-
-    private val checkoutConfigHandler: CheckoutConfigHandler by lazy {
-        CheckoutConfigHandler(supportFragmentManager)
-    }
-
-    private val checkoutConfig by lazy {
-        checkoutConfigHandler.checkoutConfig
-    }
+    private val checkoutSdk: PayPalCheckout
+        get() = PayPalCheckout
 
     private val selectedUserAction: UserAction
         get() {
@@ -91,7 +82,7 @@ class TokenQuickStartActivity : AppCompatActivity() {
     private val enteredAmount: String
         get() = totalAmountInput.editText!!.text.toString()
 
-    private val uiScope = CoroutineScope(Dispatchers.Main + SupervisorJob())
+    private val uiScope = MainScope()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -99,34 +90,35 @@ class TokenQuickStartActivity : AppCompatActivity() {
 
         totalAmountInput.editText?.addTextChangedListener { totalAmountInput.error = null }
 
-        submitTokenButton.setOnClickListener { button ->
+        submitTokenButton.setOnClickListener {
             if (totalAmountInput.editText!!.text.isEmpty()) {
                 totalAmountInput.error = getString(R.string.token_quick_start_activity_total_amount_required)
                 return@setOnClickListener
             }
 
-            button.isEnabled = false
-            val orderRequest = createOrderRequest()
-
-            uiScope.launch {
-                try {
-                    val createdOrder = orderRepository.create(orderRequest)
-                    startCheckoutWithToken(orderToken = createdOrder.id)
-                } catch (ex: IOException) {
-                    Log.w(tag, "Attempt to create order failed with the following message: ${ex.message}")
-                } finally {
-                    button.isEnabled = true
-                }
-            }
+            startCheckout()
         }
     }
 
-    private fun startCheckoutWithToken(orderToken: String) {
-        checkoutSdk.startCheckoutWithToken(
-            context = this@TokenQuickStartActivity,
-            token = orderToken,
-            checkoutConfig = checkoutConfig
+    private fun startCheckout() {
+        checkoutSdk.start(
+            createOrder = CreateOrder { createOrderActions ->
+                uiScope.launch {
+                    val createdOrder = createOrder()
+                    createdOrder?.let { createOrderActions.set(createdOrder.id) }
+                }
+            }
         )
+    }
+
+    private suspend fun createOrder(): CreatedOrder? {
+        val orderRequest = createOrderRequest()
+        return try {
+            orderRepository.create(orderRequest)
+        } catch (ex: IOException) {
+            Log.w(tag, "Attempt to create order failed with the following message: ${ex.message}")
+            null
+        }
     }
 
     private fun createOrderRequest(): OrderRequest {

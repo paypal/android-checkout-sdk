@@ -1,21 +1,18 @@
 <resources>
     <string name="app_name">Android Native Checkout Samples</string>
 
-    <string name="quickstart_navigation_start_checkout_with_orders">startCheckoutWithOrders Sample</string>
-    <string name="quickstart_navigation_start_checkout_with_token_v2">startCheckoutWithToken (Orders v2) Sample</string>
+    <string name="quickstart_navigation_start_checkout_with_orders">Client Side Only Sample</string>
+    <string name="quickstart_navigation_start_checkout_with_token_v2">Server Side Sample</string>
+    <string name="quickstart_navigation_start_payment_button">Payment Button Sample</string>
 
     <string name="orders_quick_start_activity_title">Orders Quick Start</string>
-    <string name="orders_quick_start_activity_configuration_options_title">Configure startCheckoutWithOrders</string>
+    <string name="orders_quick_start_activity_configuration_options_title">Configure Client Side Integration</string>
     <string name="orders_quick_start_activity_configuration_user_action_label">User Action:</string>
     <string name="orders_quick_start_activity_configuration_user_action_option_continue">Continue</string>
     <string name="orders_quick_start_activity_configuration_user_action_option_pay_now">Pay Now</string>
     <string name="orders_quick_start_activity_configuration_intent_label">Order Intent:</string>
     <string name="orders_quick_start_activity_configuration_intent_option_capture">Capture</string>
     <string name="orders_quick_start_activity_configuration_intent_option_authorize">Authorize</string>
-    <string name="orders_quick_start_activity_configuration_landing_page_label">Landing Page:</string>
-    <string name="orders_quick_start_activity_configuration_landing_page_option_no_preference">No Preference</string>
-    <string name="orders_quick_start_activity_configuration_landing_page_option_login">Login</string>
-    <string name="orders_quick_start_activity_configuration_landing_page_option_billing">Billing</string>
     <string name="orders_quick_start_activity_configuration_currency_code_label">Currency Code:</string>
     <string name="orders_quick_start_activity_configuration_currency_code_option_usd">USD</string>
     <string name="orders_quick_start_activity_configuration_currency_code_option_eur">EUR</string>
@@ -32,17 +29,17 @@
     <string name="orders_quick_start_activity_submit_order_button">Place Order</string>
     <string name="orders_quick_start_activity_created_item_quantity">x%1$s</string>
 
-    <string name="token_quick_start_activity_configuration_options_title">Configure startCheckoutWithToken</string>
+    <string name="payment_button_quick_start_activity_title">Payment Button</string>
+    <string name="payment_button_quick_start_activity_payment_button_title">Payment Button</string>
+    <string name="payment_button_quick_start_activity_payment_button_description">To get a better understanding for how Payment Buttons work within the Checkout SDK, please observe the logs which are printed in Logcat, filtering on <i>PaymentButtonQuickStartActivity</i>.\n\nTo see other buttons or customize this one, please view the <i>activity_payment_button_quick_start</i> layout file.</string>
+
+    <string name="token_quick_start_activity_configuration_options_title">Configure Server Side Integration</string>
     <string name="token_quick_start_activity_configuration_user_action_label">@string/orders_quick_start_activity_configuration_user_action_label</string>
     <string name="token_quick_start_activity_configuration_user_action_option_continue">@string/orders_quick_start_activity_configuration_user_action_option_continue</string>
     <string name="token_quick_start_activity_configuration_user_action_option_pay_now">@string/orders_quick_start_activity_configuration_user_action_option_pay_now</string>
     <string name="token_quick_start_activity_configuration_intent_label">@string/orders_quick_start_activity_configuration_intent_label</string>
     <string name="token_quick_start_activity_configuration_intent_option_capture">@string/orders_quick_start_activity_configuration_intent_option_capture</string>
     <string name="token_quick_start_activity_configuration_intent_option_authorize">@string/orders_quick_start_activity_configuration_intent_option_authorize</string>
-    <string name="token_quick_start_activity_configuration_currency_code_label">@string/orders_quick_start_activity_configuration_currency_code_label</string>
-    <string name="token_quick_start_activity_configuration_currency_code_option_usd">@string/orders_quick_start_activity_configuration_currency_code_option_usd</string>
-    <string name="token_quick_start_activity_configuration_currency_code_option_eur">@string/orders_quick_start_activity_configuration_currency_code_option_eur</string>
-    <string name="token_quick_start_activity_configuration_currency_code_option_gbp">@string/orders_quick_start_activity_configuration_currency_code_option_gbp</string>
     <string name="token_quick_start_activity_total_amount_hint">Total Amount</string>
     <string name="token_quick_start_activity_total_amount_required">Total Amount Required</string>
     <string name="token_quick_start_activity_submit_order_button">@string/orders_quick_start_activity_submit_order_button</string>
@@ -59,5 +56,4 @@
     <string name="dialog_create_error_item_category">Item Category is required</string>
     <string name="dialog_create_error_required">Required</string>
 
-    <string name="dialog_checkout_complete_title">Checkout Complete</string>
 </resources>
