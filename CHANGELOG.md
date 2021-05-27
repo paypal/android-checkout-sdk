@@ -1,5 +1,21 @@
 # Change Log
 
+## Version 0.2.0
+* Added Cardinal to support 3DS, this will require adding a private maven repository in order to import the SDK.
+
+```groovy
+    url  "https://cardinalcommerceprod.jfrog.io/artifactory/android"
+    credentials {
+        // Be sure to add these non-sensitive credentials in order to retrieve dependencies related to the Cardinal SDK.
+        username 'paypal_sgerritz'
+        password 'AKCp8jQ8tAahqpT5JjZ4FRP2mW7GMoFZ674kGqHmupTesKeAY2G8NcmPKLuTxTGkKjDLRzDUQ'
+    }
+```
+
+* Added the ability to cancel checkout through `CreateOrderActions`, this is useful if an error occurs while generating an Order ID from a server-side integration.
+* Resolved a bug where the SDK would crash if a buyer clicked the "Cancel checkout and Return" text while authenticating.
+* Resolved a bug where the SDK would occasionally get stuck after the buyer approved an order.
+
 ## Version 0.1.0
 Initial release. Please see [official documentation](https://developer.paypal.com/docs/business/native-checkout/android/) for full integration steps.
 
