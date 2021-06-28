@@ -1,5 +1,11 @@
 # Change Log
 
+## Version 0.3.0
+
+* Added the ability to pass in a Billing Agreement token through `CreateOrderActions`
+* Added the ability to patch an order through `OrderActions` in the `OnApprove` callback
+* Resolved a bug where the SDK would invoke the `OnError` callback on a background thread
+
 ## Version 0.2.0
 * Added Cardinal to support 3DS, this will require adding a private maven repository in order to import the SDK.
 
