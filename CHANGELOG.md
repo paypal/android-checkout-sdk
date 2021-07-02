@@ -1,5 +1,9 @@
 # Change Log
 
+## Version 0.3.1
+
+* Resolved a bug where the SDK would crash when the buyer tries to authenticate with PayPal
+
 ## Version 0.3.0
 
 * Added the ability to pass in a Billing Agreement token through `CreateOrderActions`
