@@ -1,5 +1,12 @@
 # Change Log
 
+## Version 0.4.0
+* Invoking the SDK now requires API level 23 and up (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
+* Added `paymentButtonIntent` to `CheckoutConfig`
+* `Cart` and `Buyer` are now returned in `OnApproves`'s `ApprovalData`
+* `ProcessingInstruction` can be set when creating an order client side.
+* Resolved a bug where the SDK would crash with `kotlin.UninitializedPropertyAccessException: lateinit property accessToken has not been initialized`
+
 ## Version 0.3.1
 
 * Resolved a bug where the SDK would crash when the buyer tries to authenticate with PayPal
