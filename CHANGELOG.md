@@ -1,5 +1,9 @@
 # Change Log
 
+## Version 0.4.1
+* Resolved a bug where rapid, multiple clicks of the payment button would stop the checkout flow
+* Resolved a bug where setting the config in the Application class would render payment buttons to be ineligible
+
 ## Version 0.4.0
 * Invoking the SDK now requires API level 23 and up (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
 * Added `paymentButtonIntent` to `CheckoutConfig`
