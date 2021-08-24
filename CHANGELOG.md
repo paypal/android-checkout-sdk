@@ -1,7 +1,7 @@
 # Change Log
 
 ## Version 0.4.2
-* Resolved a crash caused by JsonSyntaxException on funding elgibility call
+* Resolved a crashed caused by the funding eligibility call
 
 ## Version 0.4.1
 * Resolved a bug where rapid, multiple clicks of the payment button would stop the checkout flow
