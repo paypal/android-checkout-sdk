@@ -1,5 +1,8 @@
 # Change Log
 
+## Version 0.4.2
+* Resolved a crash caused by the funding eligibility call
+
 ## Version 0.4.1
 * Resolved a bug where rapid, multiple clicks of the payment button would stop the checkout flow
 * Resolved a bug where setting the config in the Application class would render payment buttons to be ineligible
