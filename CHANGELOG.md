@@ -1,5 +1,10 @@
 # Change Log
 
+## Version 0.4.3
+* Resolved a crash caused by null checkout session
+* Resolved conflicting attribute names
+* Added buyer's name, phone and address to Approval
+
 ## Version 0.4.2
 * Resolved a crash caused by the funding eligibility call
 
