@@ -1,4 +1,6 @@
 # Change Log
+## Version 0.4.4
+* Resolved a crash caused by registering network callbacks on Android 11
 
 ## Version 0.4.3
 * Resolved a crash caused by null checkout session
