@@ -1,4 +1,8 @@
 # Change Log
+## Version 0.4.5
+* Fix bug for disappearing payment button
+* Added payee info to order
+
 ## Version 0.4.4
 * Resolved a crash caused by registering network callbacks on Android 11
 
