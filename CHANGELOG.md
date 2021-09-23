@@ -1,4 +1,9 @@
 # Change Log
+## Version 0.5.0
+* Added OnShippingChanged callback
+* Resolved a bug where adding a new shipping address would break the checkout experience
+* Added additional error information in the OnError callback
+
 ## Version 0.4.5
 * Fix bug for disappearing payment button
 * Added payee info to order
