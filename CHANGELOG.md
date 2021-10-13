@@ -1,4 +1,7 @@
 # Change Log
+## Version 0.5.1
+* Resolved a crash in the buyer authentication process
+
 ## Version 0.5.0
 * Added OnShippingChanged callback
 * Resolved a bug where adding a new shipping address would break the checkout experience
