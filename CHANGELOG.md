@@ -1,4 +1,9 @@
 # Change Log
+## Version 0.5.2
+* Improvements to logging
+* Resolved a crash in the address selection screen
+* Updated to AndroidX libraries - Jetifier is no longer needed.
+
 ## Version 0.5.1
 * Resolved a crash in the buyer authentication process
 
