@@ -5,13 +5,13 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
+        android:name=".QuickStartApp"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme"
-        android:name=".QuickStartApp">
+        android:theme="@style/AppTheme">
         <activity android:name=".KotlinQuickStartActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -21,12 +21,15 @@
         </activity>
         <activity
             android:name=".order.OrdersQuickStartActivity"
+            android:exported="false"
             android:label="@string/orders_quick_start_activity_title" />
         <activity
             android:name=".paymentbutton.PaymentButtonQuickStartActivity"
+            android:exported="false"
             android:label="@string/payment_button_quick_start_activity_title" />
         <activity
             android:name=".token.TokenQuickStartActivity"
+            android:exported="false"
             android:label="@string/token_quick_start_activity_configuration_options_title" />
     </application>
 
