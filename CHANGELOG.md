@@ -1,4 +1,10 @@
 # Change Log
+## Version 0.5.4
+* Resolved an issue with the shipping callback not getting invoked
+* Resolved a crash caused by internal instrumentation
+* Resolved a crash related gradients on Android 6
+* Added a web checkout fallback for when there is a 3DS challenge
+
 ## Version 0.5.2
 * Improvements to logging
 * Resolved a crash in the address selection screen
