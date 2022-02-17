@@ -4,13 +4,12 @@ apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlinx-serialization'
 
 android {
-    compileSdkVersion 30
-    buildToolsVersion "30.0.2"
+    compileSdkVersion 31
 
     defaultConfig {
         applicationId "com.paypal.checkoutsamples"
         minSdkVersion 21
-        targetSdkVersion 30
+        targetSdkVersion 31
         versionCode 1
         versionName "1.0"
 
@@ -42,7 +41,7 @@ android {
 
 dependencies {
     // PayPal Checkout SDK Libraries
-    implementation 'com.paypal.checkout:android-sdk:0.5.4'
+    implementation 'com.paypal.checkout:android-sdk:0.6.0'
 
     // Other Dependencies Related To Sample App
     implementation fileTree(dir: "libs", include: ["*.jar"])

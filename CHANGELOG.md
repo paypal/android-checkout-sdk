@@ -1,4 +1,11 @@
 # Change Log
+## Version 0.6.0
+* SDK now targets Android 12 version (API 31) as well as Java 11.
+* Resolved a crash that happens when the app gets destroyed and then re-created by Android OS due to a config change.
+* Simplified Amount model returned in the OnApprove callback.
+
+Note: There are some functions that were deprecated and some return types that were changed. Please refer to the upgrade guide when migrating from an earlier version: https://developer.paypal.com/sdk/in-app/android/upgrade/
+
 ## Version 0.5.4
 * Resolved an issue with the shipping callback not getting invoked
 * Resolved a crash caused by internal instrumentation
