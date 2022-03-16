@@ -103,60 +103,7 @@ class OrdersQuickStartActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_orders_quick_start)
 
-        addItemButton.setOnClickListener {
-            createItemDialog.show(supportFragmentManager, "CreateItemDialog")
-        }
-        submitOrderButton.setOnClickListener {
-            if (createdItems.isEmpty()) {
-                itemErrorTextView.visibility = View.VISIBLE
-            } else {
-                startCheckoutWithSampleOrders(createdItems, selectedCurrencyCode)
-            }
-        }
-    }
-
-    @SuppressLint("InflateParams")
-    private fun onItemCreated(createdItem: CreatedItem) {
-        val itemView = layoutInflater.inflate(R.layout.item_preview_item, itemsContainer, false)
-            .apply {
-                itemNameText.text = createdItem.name
-                itemAmountText.text = createdItem.amount
-                itemTaxText.text = createdItem.taxAmount
-                itemQuantityText.text = getString(
-                    R.string.orders_quick_start_activity_created_item_quantity,
-                    createdItem.quantity
-                )
-            }
-        itemsContainer.addView(itemView)
-
-        createdItems.add(createdItem)
-        itemErrorTextView.visibility = View.GONE
-    }
-
-    private fun startCheckoutWithSampleOrders(
-        createdItems: List<CreatedItem>,
-        currencyCode: CurrencyCode
-    ) {
-        fun showSnackbar(text: String) {
-            Snackbar.make(rootOrdersQuickStart, text, Snackbar.LENGTH_LONG).show()
-        }
-
-        val createOrderRequest =
-            CreateOrderRequest(
-                orderIntent = selectedOrderIntent,
-                userAction = selectedUserAction,
-                shippingPreference = selectedShippingPreference,
-                currencyCode = currencyCode,
-                createdItems = createdItems
-            )
-        val order = createOrderUseCase.execute(createOrderRequest)
-
-        checkoutSdk.start(
-            createOrder = CreateOrder { actions ->
-                actions.create(order) { id ->
-                    Log.d(tag, "Order ID: $id")
-                }
-            },
+        checkoutSdk.registerCallbacks(
             onApprove = OnApprove { approval ->
                 Log.i(tag, "OnApprove: $approval")
                 when (selectedOrderIntent) {
@@ -197,6 +144,62 @@ class OrdersQuickStartActivity : AppCompatActivity() {
                 showSnackbar("🚨 An Error Occurred 🚨")
             }
         )
+
+        addItemButton.setOnClickListener {
+            createItemDialog.show(supportFragmentManager, "CreateItemDialog")
+        }
+        submitOrderButton.setOnClickListener {
+            if (createdItems.isEmpty()) {
+                itemErrorTextView.visibility = View.VISIBLE
+            } else {
+                startCheckoutWithSampleOrders(createdItems, selectedCurrencyCode)
+            }
+        }
+    }
+
+    @SuppressLint("InflateParams")
+    private fun onItemCreated(createdItem: CreatedItem) {
+        val itemView = layoutInflater.inflate(R.layout.item_preview_item, itemsContainer, false)
+            .apply {
+                itemNameText.text = createdItem.name
+                itemAmountText.text = createdItem.amount
+                itemTaxText.text = createdItem.taxAmount
+                itemQuantityText.text = getString(
+                    R.string.orders_quick_start_activity_created_item_quantity,
+                    createdItem.quantity
+                )
+            }
+        itemsContainer.addView(itemView)
+
+        createdItems.add(createdItem)
+        itemErrorTextView.visibility = View.GONE
+    }
+
+    private fun startCheckoutWithSampleOrders(
+        createdItems: List<CreatedItem>,
+        currencyCode: CurrencyCode
+    ) {
+        val createOrderRequest =
+            CreateOrderRequest(
+                orderIntent = selectedOrderIntent,
+                userAction = selectedUserAction,
+                shippingPreference = selectedShippingPreference,
+                currencyCode = currencyCode,
+                createdItems = createdItems
+            )
+        val order = createOrderUseCase.execute(createOrderRequest)
+
+        checkoutSdk.startCheckout(
+            createOrder = CreateOrder { actions ->
+                actions.create(order) { id ->
+                    Log.d(tag, "Order ID: $id")
+                }
+            }
+        )
+    }
+
+    private fun showSnackbar(text: String) {
+        Snackbar.make(rootOrdersQuickStart, text, Snackbar.LENGTH_LONG).show()
     }
 
     companion object {
