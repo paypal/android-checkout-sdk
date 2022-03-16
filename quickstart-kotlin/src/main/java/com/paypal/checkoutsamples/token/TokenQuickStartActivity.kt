@@ -101,7 +101,7 @@ class TokenQuickStartActivity : AppCompatActivity() {
     }
 
     private fun startCheckout() {
-        checkoutSdk.start(
+        checkoutSdk.startCheckout(
             createOrder = CreateOrder { createOrderActions ->
                 uiScope.launch {
                     val createdOrder = createOrder()

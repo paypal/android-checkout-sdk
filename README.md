@@ -4,6 +4,26 @@
 
 This repository contains various sample applications for the PayPal Checkout SDK for Android. If you have questions, comments, or ideas related to the Android Checkout SDK or the sample apps please create a new [issue](https://github.com/paypal/paypalcheckout-samples-android/issues) if one related to your question does not already exist.
 
+### Android Version Requirement
+The SDK will work with apps that have a minimum version of 21. However, to launch the PayPal flow,
+a check for Android 23 or higher must be done.
+
+```kotlin
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+        PayPalCheckout.setConfig(...)
+    } else {
+        Toast.makeText(this, "Checkout SDK only available for API 23+", Toast.LENGTH_SHORT).show()
+    }
+
+    ...
+
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+        PayPalCheckout.startCheckout(...)
+    } else {
+        Toast.makeText(this, "Checkout SDK only available for API 23+", Toast.LENGTH_SHORT).show()
+    }
+```
+
 ## Sample App Preparation
 
 The sample project is intended to be as hands off as possible. With that in mind, there are only two
