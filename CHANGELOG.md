@@ -1,4 +1,9 @@
 # Change Log
+## Version 0.6.1
+* Added support for v2/vault web fallback
+* Resolves a navigation issue specific to Android 6
+* Animation updates
+
 ## Version 0.6.0
 * SDK now targets Android 12 version (API 31) as well as Java 11.
 * Resolved a crash that happens when the app gets destroyed and then re-created by Android OS due to a config change.
