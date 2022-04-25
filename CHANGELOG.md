@@ -4,6 +4,14 @@
 * Resolves a navigation issue specific to Android 6
 * Animation updates
 
+###  Required Proguard Rules for 0.6.1
+```
+-keepclassmembers class * extends com.google.crypto.tink.shaded.protobuf.GeneratedMessageLite {
+  <fields>;
+}
+```
+There's an issue with EncryptedSharedPreferences where the library is missing a required proguard rule. The temporary fix is to include the above rule in your app module's `proguard-rules.pro` file. Future versions of the SDK will automatically include this rule.
+
 ## Version 0.6.0
 * SDK now targets Android 12 version (API 31) as well as Java 11.
 * Resolved a crash that happens when the app gets destroyed and then re-created by Android OS due to a config change.
