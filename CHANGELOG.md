@@ -1,4 +1,18 @@
 # Change Log
+## Version 0.6.2
+* Updated Proguard rules resolving a crash related to EncryptedSharedPreferences on minified builds
+* OnShippingChange callback is now invoked when the checkout experience is launched
+* Added ability to customize the cancellation dialog shown to users
+
+```kotlin
+val config = CheckoutConfig(
+    ...
+    uiConfig = UIConfig(
+        showExitSurveyDialog = true
+    )
+)
+```
+
 ## Version 0.6.1
 * Added support for v2/vault web fallback
 * Resolves a navigation issue specific to Android 6
