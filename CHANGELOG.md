@@ -1,4 +1,8 @@
 # Change Log
+## Version 0.6.3
+* Updated paypal authentication SDK to 1.6.0 
+* Resolved refresh token to access token exchange for subsequent logins use cases 
+
 ## Version 0.6.2
 * Updated Proguard rules resolving a crash related to EncryptedSharedPreferences on minified builds
 * OnShippingChange callback is now invoked when the checkout experience is launched
