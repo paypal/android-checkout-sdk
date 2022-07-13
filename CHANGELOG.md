@@ -24,6 +24,14 @@
         }
     }
 ```
+* Extracting 3ds and cardinal into its own optional module controlled by build flavors
+```
+    productFlavors {
+        external {
+            dimension "clientType"
+        }
+    }
+```
 * Adding in native smart payment buttons
 * Adding in support for Overcapture
 * UI updates
