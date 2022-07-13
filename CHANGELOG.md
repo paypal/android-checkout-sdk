@@ -1,4 +1,33 @@
 # Change Log
+## Version 0.7.0
+* Adding in native support for Billing Agreements
+```    fun setBillingAgreementId(billingAgreementId: String) {
+        CoroutineScope(coroutineContext).launch {
+            val convertedEcToken = try {
+                baTokenToEcTokenAction.execute(billingAgreementId)
+            } catch (exception: Exception) {
+                internalOnOrderCreated(
+                    OrderCreateResult.Error(
+                        PYPLException("exception with setting BA id: ${exception.message}")
+                    )
+                )
+                null
+            }
+            convertedEcToken?.let {
+                with(DebugConfigManager.getInstance()) {
+                    checkoutToken = convertedEcToken
+                    repo.isVaultFlow = false
+                    applicationContext?.let { Cache.cacheIsVaultFlow(it, repo.isVaultFlow) }
+                    internalOnOrderCreated(OrderCreateResult.Success(convertedEcToken))
+                }
+            }
+        }
+    }
+```
+* Adding in native smart payment buttons
+* Adding in support for Overcapture
+* UI updates
+
 ## Version 0.6.3
 * Updated paypal authentication SDK to 1.6.0 
 * Resolved refresh token to access token exchange for subsequent logins use cases 
