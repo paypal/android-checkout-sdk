@@ -1,4 +1,51 @@
 # Change Log
+
+## Version 0.7.3
+* The original returnUrl was added back into this release and needs to be set in the merchant portal if it wasn't already set
+
+## Version 0.7.2
+* This version introduces a breaking change around removing the use for a returnUrl
+* In order to get authenticatation working correctly, there needs to be a returnUrl of *nativexo://paypalpay* added to the clientId of the app
+    * If this returnUrl is not added the app will not redirect correctly after auth
+
+## Version 0.7.1
+* Adding in native support for Billing Agreements
+```    fun setBillingAgreementId(billingAgreementId: String) {
+        CoroutineScope(coroutineContext).launch {
+            val convertedEcToken = try {
+                baTokenToEcTokenAction.execute(billingAgreementId)
+            } catch (exception: Exception) {
+                internalOnOrderCreated(
+                    OrderCreateResult.Error(
+                        PYPLException("exception with setting BA id: ${exception.message}")
+                    )
+                )
+                null
+            }
+            convertedEcToken?.let {
+                with(DebugConfigManager.getInstance()) {
+                    checkoutToken = convertedEcToken
+                    repo.isVaultFlow = false
+                    applicationContext?.let { Cache.cacheIsVaultFlow(it, repo.isVaultFlow) }
+                    internalOnOrderCreated(OrderCreateResult.Success(convertedEcToken))
+                }
+            }
+        }
+    }
+```
+## Version 0.7.0
+* Extracting 3ds and cardinal into its own optional module controlled by build flavors
+```
+    productFlavors {
+        external {
+            dimension "clientType"
+        }
+    }
+```
+* Adding in native smart payment buttons
+* Adding in support for Overcapture
+* UI updates
+
 ## Version 0.6.3
 * Updated paypal authentication SDK to 1.6.0 
 * Resolved refresh token to access token exchange for subsequent logins use cases 
