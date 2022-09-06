@@ -3,10 +3,11 @@
 ## Version 0.8.1
 * Removing the requirement for a returnUrl(If there are issues with returning back to the original app, try adding *nativexo://paypalpay* as another returnUrl on the developer portal)
 * Adding the ability to add a card on US and EU
-* Adding in support for checking out with crypto
 * Fixing memory leak issues
 
-## Version 0.7.3
+## Version 0.8.0
+* Adding in support for native one time password
+* Adding in support for checking out with crypto
 
 ## Version 0.7.3
 * The original returnUrl was added back into this release and needs to be set in the merchant portal if it wasn't already set
