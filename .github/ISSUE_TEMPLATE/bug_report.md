@@ -30,6 +30,8 @@ If applicable, add screenshots to help explain your problem.
  - Device: [e.g. Emulator or One Plus 9]
  - Browser [e.g. chrome, safari] <- only applicable for app switches or fallback situations
  - SDK Version [e.g. 0.1.0]
+ - Package name of your app [e.g. com.example.my_app]
+ - Client ID
 
 **Additional context**
 Add any other context about the problem here.
