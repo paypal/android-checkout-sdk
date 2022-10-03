@@ -1,5 +1,11 @@
 # Change Log
 
+## Version 0.8.2
+* Added the ability to accept a shipping change without having to patching the order
+* Resolved crashes caused by Encrypted Shared Preferences
+* Fixed an issue caused by a duplicate package name when minifying
+* Accessibility fixes
+
 ## Version 0.8.1
 * Removing the requirement for a returnUrl(If there are issues with returning back to the original app, try adding *nativexo://paypalpay* as another returnUrl on the developer portal)
 * Adding the ability to add a card on US and EU

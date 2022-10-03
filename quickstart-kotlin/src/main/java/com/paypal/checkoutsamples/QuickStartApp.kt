@@ -16,7 +16,6 @@ class QuickStartApp : Application() {
                 application = this,
                 clientId = PAYPAL_CLIENT_ID,
                 environment = Environment.SANDBOX,
-                returnUrl = "${BuildConfig.APPLICATION_ID}://paypalpay",
                 currencyCode = CurrencyCode.USD,
                 userAction = UserAction.PAY_NOW,
                 settingsConfig = SettingsConfig(
