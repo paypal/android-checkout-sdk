@@ -1,5 +1,8 @@
 # Change Log
 
+## Version 0.8.3
+* Added `getOrderDetails()` to `OrderActions` in the onApprove callback for getting order information after an order has been approved
+
 ## Version 0.8.2
 * Added the ability to accept a shipping change without having to patching the order
 * Resolved crashes caused by Encrypted Shared Preferences
