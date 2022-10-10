@@ -1,6 +1,9 @@
 # Change Log
 
 ## Version 0.8.3
+* Added the `phone`, `birthDate` and `taxInfo`  fields to the `Payer`object that comes as part of the `OrderResponse` object in `getOrderDetails()`, `capture()` and `authorize()` order actions.
+
+## Version 0.8.3
 * Added `getOrderDetails()` to `OrderActions` in the onApprove callback for getting order information after an order has been approved
 
 ## Version 0.8.2
