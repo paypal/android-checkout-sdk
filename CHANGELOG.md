@@ -1,6 +1,9 @@
 # Change Log
 
-## Version 0.8.3
+## Version 0.8.5
+* Fixed a [web fallback issue](https://github.com/paypal/android-checkout-sdk/issues/153) causing an infinite spinner when coming back from web fallbacks flows.
+* Fixed two issues related to auth native and legacy web auth flows.
+## Version 0.8.4
 * Added the `phone`, `birthDate` and `taxInfo`  fields to the `Payer`object that comes as part of the `OrderResponse` object in `getOrderDetails()`, `capture()` and `authorize()` order actions.
 
 ## Version 0.8.3
