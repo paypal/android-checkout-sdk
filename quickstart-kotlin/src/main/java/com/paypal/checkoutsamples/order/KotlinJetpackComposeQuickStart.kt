@@ -57,7 +57,6 @@ class KotlinJetpackComposeQuickStart : ComponentActivity() {
         registerPaypalCheckoutCallback(checkOutSdk)
         val createOrderUseCase by lazy { CreateOrderUseCase() }
 
-
         setContent {
             AndroidNativeCheckoutSamplesTheme {
                 Surface(modifier = Modifier.fillMaxSize(), color = MaterialTheme.colors.background) {
@@ -143,6 +142,8 @@ class KotlinJetpackComposeQuickStart : ComponentActivity() {
             }
         }
     }
+    /* Observes the different check-out states and updates the screen with the correct message
+    * Can be customized according to the user-needs */
     @Composable
     private fun ObservePaypalCheckoutState(checkoutState:PaypalCheckoutState,
     updateObserveCheckoutState:(Boolean,String)->Unit){
@@ -170,6 +171,7 @@ class KotlinJetpackComposeQuickStart : ComponentActivity() {
             }
         }
     }
+    /* Creates the order item needed by paypal checkout sdk */
     private fun initiatePaymentMethod(
         paypalSdkInstance: PayPalCheckout,
         orderUseCase: CreateOrderUseCase,
