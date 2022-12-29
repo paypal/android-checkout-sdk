@@ -1,4 +1,4 @@
-package com.paypal.checkoutsamples.order
+package com.paypal.checkoutsamples.order.compose
 
 import android.os.Bundle
 import android.util.Log
@@ -40,6 +40,13 @@ import com.paypal.checkout.createorder.ShippingPreference
 import com.paypal.checkout.createorder.UserAction
 import com.paypal.checkout.error.OnError
 import com.paypal.checkout.order.CaptureOrderResult
+import com.paypal.checkoutsamples.order.CreatedItem
+import com.paypal.checkoutsamples.order.compose.checkoutstate.Loading
+import com.paypal.checkoutsamples.order.compose.checkoutstate.OrderCapturingFailed
+import com.paypal.checkoutsamples.order.compose.checkoutstate.OrderPaidForSuccessfully
+import com.paypal.checkoutsamples.order.compose.checkoutstate.OrderPaymentCancelled
+import com.paypal.checkoutsamples.order.compose.checkoutstate.OrderPaymentFailedWithAnError
+import com.paypal.checkoutsamples.order.compose.checkoutstate.PaypalCheckoutState
 import com.paypal.checkoutsamples.order.usecase.CreateOrderRequest
 import com.paypal.checkoutsamples.order.usecase.CreateOrderUseCase
 import com.paypal.checkoutsamples.ui.theme.AndroidNativeCheckoutSamplesTheme
@@ -68,15 +75,7 @@ class KotlinJetpackComposeQuickStart : ComponentActivity() {
         }
     }
 
-    /* represents the different states to be observed when payment is initiated  */
-    sealed interface PaypalCheckoutState
-    object Loading : PaypalCheckoutState
-    object OrderPaidForSuccessfully : PaypalCheckoutState
-    object OrderCapturingFailed : PaypalCheckoutState
-    object OrderPaymentCancelled : PaypalCheckoutState
 
-    @JvmInline
-    value class OrderPaymentFailedWithAnError(val errorMsg: String) : PaypalCheckoutState
 
     fun registerPaypalCheckoutCallback(checkoutSdk: PayPalCheckout) {
         checkoutSdk.registerCallbacks(onApprove = OnApprove { approval ->
@@ -110,11 +109,11 @@ class KotlinJetpackComposeQuickStart : ComponentActivity() {
                       createdItems: List<CreatedItem>){
         var observeCheckoutState by remember { mutableStateOf(false) }
         var checkoutStateMsg by remember { mutableStateOf("") }
-        val _checkoutState by checkoutState.collectAsState(Loading)
+        val internalCheckoutState by checkoutState.collectAsState(Loading)
         when(observeCheckoutState){
             true->{
                 CircularProgressIndicator(modifier = Modifier.size(200.dp))
-                ObservePaypalCheckoutState(_checkoutState){
+                ObservePaypalCheckoutState(internalCheckoutState){
                     observeState,msg->
                     observeCheckoutState = observeState
                     checkoutStateMsg=msg
@@ -145,8 +144,8 @@ class KotlinJetpackComposeQuickStart : ComponentActivity() {
     /* Observes the different check-out states and updates the screen with the correct message
     * Can be customized according to the user-needs */
     @Composable
-    private fun ObservePaypalCheckoutState(checkoutState:PaypalCheckoutState,
-    updateObserveCheckoutState:(Boolean,String)->Unit){
+    private fun ObservePaypalCheckoutState(checkoutState: PaypalCheckoutState,
+                                           updateObserveCheckoutState:(Boolean,String)->Unit){
         LaunchedEffect(checkoutState){
             when(checkoutState){
                 Loading -> Log.d("ComposeActivityTag","Initiating order capture..")
