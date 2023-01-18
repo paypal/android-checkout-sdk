@@ -1,5 +1,9 @@
 # Change Log
 
+
+## Version 0.8.8
+* Adding the `ReturnUrl` requirement back into the `CheckoutConfig`
+
 ## Version 0.8.7
 * Upgraded the Cardinal SDK to version 2.2.7-2 which made updates to Device Data collection related to Google Play's User Data Policy
 
