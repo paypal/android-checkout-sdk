@@ -23,7 +23,7 @@ class QuickStartApp : Application() {
                     loggingEnabled = true,
                     shouldFailEligibility = false
                 ),
-                returnUrl = BuildConfig.LIBRARY_PACKAGE_NAME
+                returnUrl = BuildConfig.LIBRARY_PACKAGE_NAME + "://paypalpay"
             )
         )
     }
