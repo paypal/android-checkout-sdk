@@ -21,7 +21,7 @@ class QuickStartApp : Application() {
                 userAction = UserAction.PAY_NOW,
                 settingsConfig = SettingsConfig(
                     loggingEnabled = true,
-                    shouldFailEligibility = false
+                    showWebCheckout = false
                 ),
                 returnUrl = BuildConfig.LIBRARY_PACKAGE_NAME
             )
