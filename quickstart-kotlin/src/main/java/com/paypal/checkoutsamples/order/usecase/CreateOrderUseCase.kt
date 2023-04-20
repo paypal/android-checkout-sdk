@@ -5,7 +5,7 @@ import com.paypal.checkout.createorder.OrderIntent
 import com.paypal.checkout.createorder.ShippingPreference
 import com.paypal.checkout.createorder.UserAction
 import com.paypal.checkout.order.AppContext
-import com.paypal.checkout.order.Order
+import com.paypal.checkout.order.OrderRequest
 import com.paypal.checkoutsamples.order.CreatedItem
 
 /**
@@ -27,7 +27,7 @@ class CreateOrderUseCase(
     private val createPurchaseUnitUseCase: CreatePurchaseUnitUseCase = CreatePurchaseUnitUseCase()
 ) {
 
-    fun execute(request: CreateOrderRequest): Order = with(request) {
+    fun execute(request: CreateOrderRequest): OrderRequest = with(request) {
         val createPurchaseUnitRequest = CreatePurchaseUnitRequest(
             createdItems = createdItems,
             shippingPreference = shippingPreference,
@@ -35,7 +35,7 @@ class CreateOrderUseCase(
         )
         val purchaseUnit = createPurchaseUnitUseCase.execute(createPurchaseUnitRequest)
 
-        return Order.Builder()
+        return OrderRequest.Builder()
             .intent(orderIntent)
             .purchaseUnitList(listOf(purchaseUnit))
             .appContext(
