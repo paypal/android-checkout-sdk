@@ -2,6 +2,11 @@
 
 ![Maven Central](https://img.shields.io/maven-central/v/com.paypal.checkout/android-sdk?style=for-the-badge) ![Sonatype Nexus (Snapshots)](https://img.shields.io/nexus/s/com.paypal.checkout/android-sdk?server=https%3A%2F%2Foss.sonatype.org&style=for-the-badge)
 
+### Notice:
+This integration path is only active for existing developers who have previously integrated the PayPal Android Checkout SDK. For any new developers seeking the Native Checkout experience, this integration path is considered inactive. Please integrate via [BrainTree Android SDK](https://github.com/braintree/braintree_android) or [PayPal Android SDK](https://github.com/paypal/Android-SDK/).
+
+---
+
 This repository contains various sample applications for the PayPal Checkout SDK for Android. If you have questions, comments, or ideas related to the Android Checkout SDK or the sample apps please create a new [issue](https://github.com/paypal/paypalcheckout-samples-android/issues) if one related to your question does not already exist.
 
 ### Android Version Requirement
