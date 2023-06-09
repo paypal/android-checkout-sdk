@@ -1,5 +1,13 @@
 # Change Log
 
+## Version 0.112.2
+
+* Added a Discount field to the Cart Details UI on the checkout home page
+* Addressed some issues on Vault flows
+* Minor UI fixes 
+* Change policies link to point to user agreement screen
+* Third party providers compliance work
+
 ## Version 0.112.0
 **Features Updates**
 * Introduced Pay Later PayPal offerings
