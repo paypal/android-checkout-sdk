@@ -7,7 +7,6 @@ import com.paypal.checkout.config.Environment
 import com.paypal.checkout.config.SettingsConfig
 import com.paypal.checkout.createorder.CurrencyCode
 import com.paypal.checkout.createorder.UserAction
-import com.paypal.pyplcheckout.BuildConfig
 
 class QuickStartApp : Application() {
     override fun onCreate() {
@@ -23,7 +22,7 @@ class QuickStartApp : Application() {
                     loggingEnabled = true,
                     showWebCheckout = false
                 ),
-                returnUrl = BuildConfig.LIBRARY_PACKAGE_NAME + "://paypalpay"
+                returnUrl  = "${BuildConfig.APPLICATION_ID}://paypalpay"
             )
         )
     }
