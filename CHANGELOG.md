@@ -1,5 +1,24 @@
 # Change Log
 
+## Version 1.0.0
+
+* 		This build enables the native flows for buyers in the US and Canada. EU buyers will see a web fallback experience.
+
+The following changes are included in this release:
+
+* 		Fixed UI bugs to ensure a consistent experience for multiple countries and languages
+* 		Fixed an issue that caused users to continue checkout on web when an invalid currency was selected
+* 		Ensures return of relevant billing information such as First Name, Last Name, and Email in the onApprove callback
+* 		Added resource name qualifier to avoid name collisions
+* 		Deprecated the following order actions
+* 		Patch
+* 		Capture
+* 		Authorize
+* 		GetDetails
+* 		ExecuteBillingAgreement
+* 		onShippingChangeAction.Patch
+
+
 ## Version 0.112.2
 
 * Added a Discount field to the Cart Details UI on the checkout home page
