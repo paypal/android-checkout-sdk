@@ -1,5 +1,15 @@
 # Change Log
 
+## Version 1.1.0
+
+**This build enables the native flows for buyers in the US, Canada, EU, and UK. All other buyers will see web fallback experiences.**
+
+The following changes are included in this release:
+
+* Buy Now Pay Later entry points
+* Improved authentication flows in SCA regions
+* Minor UI fixes
+
 ## Version 1.0.0
 
 **This build enables the native flows for buyers in the US and Canada. EU buyers will see a web fallback experience.**
