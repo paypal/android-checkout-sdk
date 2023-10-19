@@ -1,0 +1,34 @@
+# from https://docs.github.com/en/actions/managing-issues-and-pull-requests/commenting-on-an-issue-when-a-label-is-added
+
+# This workflow uses actions that are not certified by GitHub.
+# They are provided by a third-party and are governed by
+# separate terms of service, privacy policy, and support
+# documentation.
+
+# GitHub recommends pinning actions to a commit SHA.
+# To get a newer version, you will need to update the SHA.
+# You can also reference a tag or branch, but the action may change without warning.
+
+name: Auto response to raised live issues
+on:
+  issues:
+    types: [opened]
+
+jobs:
+  add-comment:
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+    steps:
+      - name: Add automated comment
+        uses: peter-evans/create-or-update-comment@v3
+        with:
+          issue-number: ${{ github.event.issue.number }}
+          body: |
+            Thank you for reaching out to the Native Checkout SDK team. This integration path is now inactive for new merchants.
+            If you are an existing merchant, please contact us [here](https://www.paypal.com/us/business/contact-sales) for further assistance.
+            
+            New merchants can integrate the Native Checkout experience via the Braintree iOS SDK or PayPal iOS SDK.
+            For more information please see their respective developer documentation linked below.
+              * [Braintree iOS SDK](https://developer.paypal.com/braintree/docs/guides/paypal/native-checkout/ios/v5)
+              * [PayPal iOS SDK](https://developer.paypal.com/beta/advanced-mobile/)
