@@ -31,4 +31,4 @@ jobs:
             New merchants can integrate the Native Checkout experience via the Braintree Android SDK or PayPal Android SDK.
             For more information please see their respective developer documentation linked below.
               * [Braintree Android SDK](https://developer.paypal.com/braintree/docs/guides/overview)
-              * [PayPal Android SDK](https://developer.paypal.com/beta/advanced-mobile/)
+              * [PayPal Android SDK](https://developer.paypal.com/beta/advanced-mobile/integrate-android/)
