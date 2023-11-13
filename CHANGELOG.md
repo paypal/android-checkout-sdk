@@ -1,5 +1,14 @@
 # Change Log
 
+## Version 1.2.0
+
+**This build enables the native flows for buyers in Australia. All other buyers, except those in US, Canada, EU, UK and Australia, will experience web fallbacks.**
+
+The following changes are included in this release:
+
+* Minor UI fixes
+* Internal improvements.
+
 ## Version 1.1.0
 
 **This build enables the native flows for buyers in the US, Canada, EU, and UK. All other buyers will see web fallback experiences.**
