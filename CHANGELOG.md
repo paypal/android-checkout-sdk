@@ -1,5 +1,23 @@
 # Change Log
 
+## Version 1.2.1
+
+* Upgraded the data-collector SDK to version 3.21.0 which made updates to Device Data collection related to Google Play's User Data Policy
+
+Note: If you are seeing the Play Store flag your APK after updating to this version, please try following these steps:
+1. Go to your Play Console
+2. Select the app
+3. Go to App bundle explorer
+4. Select the violating APK/app bundle's App version at the top right dropdown menu, and make a note of which releases they are under
+5. Go to the track with the violation. It will be one of these 4 pages: Internal / Closed / Open testing or Production
+6. Near the top right of the page, click Create new release. (You may need to click Manage track first)
+   If the release with the violating APK is in a draft state, discard the release
+7. Add the new version of app bundles or APKs
+   Make sure the non-compliant version of app bundles or APKs is under the Not included section of this release
+8. To save any changes you make to your release, select Save
+9. When you've finished preparing your release, select Review release, and then proceed to roll out the release to 100%.
+10. If the violating APK is released to multiple tracks, repeat steps 5-9 in each track
+
 ## Version 1.2.0
 
 **This build enables the native flows for buyers in Australia. All other buyers, except those in US, Canada, EU, UK and Australia, will experience web fallbacks.**
