@@ -107,7 +107,10 @@ class TokenQuickStartActivity : AppCompatActivity() {
                     val createdOrder = createOrder()
                     createdOrder?.let { createOrderActions.set(createdOrder.id) }
                 }
-            }
+            },
+            // This sample app has not obtained consent from the buyer to collect location data.
+            // This flag enables PayPal to collect necessary information required for Fraud Detection and Risk Management
+            hasUserLocationConsent = false
         )
     }
 

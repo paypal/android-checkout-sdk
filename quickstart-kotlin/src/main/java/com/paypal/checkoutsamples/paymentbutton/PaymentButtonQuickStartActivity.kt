@@ -77,7 +77,10 @@ class PaymentButtonQuickStartActivity : AppCompatActivity() {
             onError = OnError { errorInfo ->
                 Log.v(tag, "OnError")
                 Log.d(tag, "Error details: $errorInfo")
-            }
+            },
+            // This sample app has not obtained consent from the buyer to collect location data.
+            // This flag enables PayPal to collect necessary information required for Fraud Detection and Risk Management
+            hasUserLocationConsent = false
         )
     }
 

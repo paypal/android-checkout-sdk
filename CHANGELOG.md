@@ -1,5 +1,33 @@
 # Change Log
 
+## Version 1.3.0
+
+* Add `hasUserLocationConsent` parameter to `PayPalCheckout.start()`, `PayPalCheckout.startCheckout()`, `PaymentButtonContainer.setup()`, and `PaymentButton.setup()`
+
+Note: Merchant applications are responsible for collecting user data consent. If your app has obtained consent from the user to collect location data in compliance with
+[Google Play Developer Program policies](https://support.google.com/googleplay/android-developer/answer/10144311#personal-sensitive),
+set `hasUserLocationConsent` to `true`. This flag enables PayPal to collect necessary information required for Fraud Detection and Risk Management.
+
+Merchant applications may be required to display a disclosure before collecting user location data in accordance with Google’s
+[Best practices for prominent disclosures and consent](https://support.google.com/googleplay/android-developer/answer/11150561?hl=en&ref_topic=12797379&sjid=10421482417907285178-NC).
+By setting `userHasLocationConsent` to true, your app is enabled to share device location data with a third party (PayPal) for Fraud Detection and Risk Management.
+
+[Examples of prominent in-app disclosures](https://support.google.com/googleplay/android-developer/answer/9799150?hl=en#Prominent%20in-app%20disclosure)
+
+Note: If you are seeing the Play Store flag your APK after updating to this version, please try following these steps:
+1. Go to your Play Console
+2. Select the app
+3. Go to App bundle explorer
+4. Select the violating APK/app bundle's App version at the top right dropdown menu, and make a note of which releases they are under
+5. Go to the track with the violation. It will be one of these 4 pages: Internal / Closed / Open testing or Production
+6. Near the top right of the page, click Create new release. (You may need to click Manage track first)
+   If the release with the violating APK is in a draft state, discard the release
+7. Add the new version of app bundles or APKs
+   Make sure the non-compliant version of app bundles or APKs is under the Not included section of this release
+8. To save any changes you make to your release, select Save
+9. When you've finished preparing your release, select Review release, and then proceed to roll out the release to 100%.
+10. If the violating APK is released to multiple tracks, repeat steps 5-9 in each track
+
 ## Version 1.2.1
 
 * Upgraded the data-collector SDK to version 3.21.0 which made updates to Device Data collection related to Google Play's User Data Policy
