@@ -194,7 +194,10 @@ class OrdersQuickStartActivity : AppCompatActivity() {
                 actions.create(order) { id ->
                     Log.d(tag, "Order ID: $id")
                 }
-            }
+            },
+            // This sample app has not obtained consent from the buyer to collect location data.
+            // This flag enables PayPal to collect necessary information required for Fraud Detection and Risk Management
+            hasUserLocationConsent = false
         )
     }
 
