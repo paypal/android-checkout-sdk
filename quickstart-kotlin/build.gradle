@@ -41,7 +41,7 @@ android {
 
 dependencies {
     // PayPal Checkout SDK Libraries
-    implementation 'com.paypal.checkout:android-sdk:1.3.0'
+    implementation 'com.paypal.checkout:android-sdk:1.3.2'
 
     // Other Dependencies Related To Sample App
     implementation fileTree(dir: "libs", include: ["*.jar"])
