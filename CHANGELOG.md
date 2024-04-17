@@ -1,5 +1,13 @@
 # Change Log
 
+## Version 1.3.2
+
+* Upgraded the Magnes SDK to version 5.5.1
+
+## Version 1.3.1
+
+* Upgraded the Cardinal SDK to version 2.2.7-5
+
 ## Version 1.3.0
 
 * Add `hasUserLocationConsent` parameter to `PayPalCheckout.start()`, `PayPalCheckout.startCheckout()`, `PaymentButtonContainer.setup()`, and `PaymentButton.setup()`
